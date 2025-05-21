@@ -6,10 +6,8 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
-    max-width: 100vw;
+    width: 100vw;
     height: 100vh;
-    max-height: 100vh;
     margin: 0;
     padding: 0;
     position: relative;
@@ -71,7 +69,7 @@ header a:hover {
     background-color: rgba(25, 25, 85, 0.534);
 }
 
-@media (max-width: 770px) {
+@media (max-width: 780px) {
     header .menu-bar{
         width: 100%;
         justify-content: space-between;
