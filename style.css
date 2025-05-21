@@ -115,9 +115,9 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 5px;
     margin-top: 80px;
     min-height: 75%;
+    width: 100%;
 }
 
 /*footer*/
