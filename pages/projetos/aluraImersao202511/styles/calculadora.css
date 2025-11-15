@@ -1,0 +1,53 @@
+#main #app {
+  display: flex;
+  justify-content: center;
+}
+
+#calculadora {
+  background-color: rgb(177, 176, 176);
+  padding: 20px 10px;
+  border-radius: 7px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 500px;
+}
+
+#calculadora #areaBotao {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#calculadora #resultado {
+  background-color: rgb(224, 223, 223);
+  text-align: right;
+  padding: 2px 5px;
+  overflow-x: scroll; /*permitir scrow no eixo x (plano cartesiano)*/
+  height: 26px;
+  white-space: nowrap; /*impede que a linha seja quebrada quando não houver mais espaço*/
+}
+
+#calculadora ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+#calculadora li{
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  align-content: center;
+  border-radius: 11px;
+}
+
+#calculadora li:hover {
+  background-color: rgb(204, 204, 204);
+  cursor: pointer;
+}
