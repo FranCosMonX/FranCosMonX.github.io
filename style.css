@@ -4,8 +4,6 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -108,34 +106,27 @@ header a:hover {
 
 /*main*/
 main {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  height: 100%;
+  h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+  }
+  
+  text-align: justify;
   width: 100%;
-  overflow-y: scroll;
-  padding: 0px 20px;
-}
-
-main #projetos {
-  cursor: default;
-  text-align: left;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 100%;
-}
 
-main #projetos .projeto {
-  max-width: 600px;
-  padding: 10px 20px;
-  border: .8px solid white;
-  border-radius: 9px;
-}
+  #projetos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-main #projetos h3 {
-  margin: 0;
+  .projeto {
+    width: 90%;
+    max-width: 600px;
+    padding: 10px 15px;
+    border: .5px solid white;
+    border-radius: 9px;
+  }
 }
