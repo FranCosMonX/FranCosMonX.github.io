@@ -131,16 +131,6 @@ main {
   overflow-y: auto;
 }
 
-#areaConteudo {
-  padding: 20px 40px;
-}
-
-#areaConteudo h2,
-#areaConteudo h3 {
-  border-bottom: .2px solid white;
-  padding-bottom: 4px;
-}
-
 main h1,
 main h2,
 main h3,
@@ -164,4 +154,27 @@ main code {
 main .blocoCodigo {
   display: block;
   padding: 10px 20px;
+}
+
+#areaConteudo {
+  padding: 20px 40px;
+}
+
+#areaConteudo h2,
+#areaConteudo h3 {
+  border-bottom: .2px solid white;
+  padding-bottom: 4px;
+}
+
+#areaConteudo #ref {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+#ref ul {
+  padding-left: 20px;
+  margin: 0px;
+  list-style: none;
 }
