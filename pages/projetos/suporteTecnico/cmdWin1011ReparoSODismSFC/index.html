@@ -12,9 +12,9 @@
   <main id="areaConteudo">
     <section class="anotacoes">
       <article>
-        <h2>Reparo dos Arquivos de Sistema do Windows via Terminal</h2>
+        <h2>Reparo dos Arquivos de Sistema do Windows via Terminal Local</h2>
         <p>
-          Este artigo descreve os procedimentos utilizados para reparar arquivos de sistema corrompidos ou ausentes no Windows 10 e Windows 11 usando o Prompt de Comando (CMD) com as ferramentas SFC (System File Checker) e DISM (Deployment Imaging Service and Management Tool).
+          Este artigo descreve os procedimentos utilizados para reparar arquivos de sistema corrompidos ou ausentes no Windows 10 e Windows 11 usando o Prompt de Comando (CMD) do Sistema Operacional (SO) atualmente logado com as ferramentas SFC (System File Checker) e DISM (Deployment Imaging Service and Management Tool).
         </p>
         <h3>Acessando o CMD com permissões elevadas (root)</h3>
         <p>
@@ -36,7 +36,7 @@
         <p>
           Todos os comandos de reparo de sistema serão executados no Prompt de Comando elevado. Para isto é importante que o usuário saiba quais comandos estão sendo executados e para qual finalidade para que não haja problemas futuros como perda de dados, mau funcionamento do sistema operacional ou tornar o sistema vulnerável a ataques. Dessa forma, este post conterá um resumo dos comandos utilizados e suas respectivas funções e para mais informações, o usuário poderá visitar a documentação oficial da Microsoft através dos links fornecidos.
         </p>
-        <h3>Recuperando arquivos com SFC - Forma Simplificada</h3>
+        <h3>Recuperando arquivos com SFC</h3>
         <p>
           O System File Checker (SFC) é uma ferramenta integrada do Windows que verifica a integridade dos arquivos de sistema protegidos e substitui os arquivos corrompidos ou ausentes por cópias em cache. As etapas a seguir descrevem como usar o SFC de forma simplificada, para os usuários que possuem acesso ao Sistema Operaciona (SO). Caso nnão possua, deverá utilizar outro passo a passo.
         </p>
@@ -58,7 +58,7 @@
             </ul>
           </li>
         </ul>
-        <h3>Recuperando arquivos com DISM - Forma Simplificada</h3>
+        <h3>Recuperando arquivos com DISM</h3>
         <p>
           O Deployment Imaging Service and Management Tool (DISM) é uma ferramenta poderosa que pode ser usada para reparar a imagem do sistema operacional do Windows. As etapas a seguir descrevem como usar o DISM de forma simplificada, para os usuários que possuem acesso ao Sistema Operaciona (SO). Caso nnão possua, deverá utilizar outro passo a passo.
         </p>
