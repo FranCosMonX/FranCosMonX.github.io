@@ -156,6 +156,20 @@ main .blocoCodigo {
   padding: 10px 20px;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.068);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 255, 0.138);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 255, 0.238);
+}
+
 #areaConteudo {
   padding: 20px 40px;
 }
