@@ -131,6 +131,10 @@ main {
   overflow-y: auto;
 }
 
+#areaConteudo {
+  padding: 20px 40px;
+}
+
 main h1,
 main h2,
 main h3,
@@ -138,6 +142,8 @@ main h4,
 main h5,
 main h6 {
   text-align: center;
+  border-bottom: .2px solid white;
+  padding-bottom: 4px;
 }
 
 main a,

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles/suporteTecnico/impGpeditWin1011PRO.css">
+  <title>Suporte Técnico</title>
+</head>
+<body>
+  <header id="header"></header>
+  <main id="areaConteudo">
+    <section class="anotacoes">
+      <article>
+        <h2>Reparo dos Arquivos de Sistema do Windows via Terminal</h2>
+        <p>
+          Este artigo descreve os procedimentos utilizados para reparar arquivos de sistema corrompidos ou ausentes no Windows 10 e Windows 11 usando o Prompt de Comando (CMD) com as ferramentas SFC (System File Checker) e DISM (Deployment Imaging Service and Management Tool).
+        </p>
+        <h3>Acessando o CMD com permissões elevadas (root)</h3>
+        <p>
+          Para executar os comandos de reparo, é necessário abrir o Prompt de Comando com permissões de administrador. Siga os passos abaixo para abrir o CMD elevado:
+        </p>
+        <ul>
+          <li>
+            <strong>Abrir o Prompt de Comando como Administrador:</strong>
+            <ul>
+              <li>
+                Clique com o botão direito no menu Iniciar e selecione "Prompt de Comando (Admin)" ou "Windows PowerShell (Admin)".
+              </li>
+              <li>
+                Confirme a solicitação do Controle de Conta de Usuário clicando em "Sim".
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Todos os comandos de reparo de sistema serão executados no Prompt de Comando elevado. Para isto é importante que o usuário saiba quais comandos estão sendo executados e para qual finalidade para que não haja problemas futuros como perda de dados, mau funcionamento do sistema operacional ou tornar o sistema vulnerável a ataques. Dessa forma, este post conterá um resumo dos comandos utilizados e suas respectivas funções e para mais informações, o usuário poderá visitar a documentação oficial da Microsoft através dos links fornecidos.
+        </p>
+        <h3>Recuperando arquivos com SFC - Forma Simplificada</h3>
+        <p>
+          O System File Checker (SFC) é uma ferramenta integrada do Windows que verifica a integridade dos arquivos de sistema protegidos e substitui os arquivos corrompidos ou ausentes por cópias em cache. As etapas a seguir descrevem como usar o SFC de forma simplificada, para os usuários que possuem acesso ao Sistema Operaciona (SO). Caso nnão possua, deverá utilizar outro passo a passo.
+        </p>
+        <ul>
+          <li>
+            <strong>Passo 1:</strong> No Prompt de Comando elevado, digite o seguinte comando e pressione <em>Enter</em>:
+            <code class="blocoCodigo">sfc /scannow</code>
+          </li>
+          <li>
+            <strong>Passo 2:</strong> Aguarde a conclusão do processo. O SFC verificará todos os arquivos de sistema protegidos e substituirá os arquivos corrompidos ou ausentes por cópias em cache localizadas na pasta.
+            <code class="blocoCodigo">%WinDir%\System32\dllcache</code>
+          </li>
+          <li>
+            <strong>Passo 3:</strong> Após a conclusão, você verá uma das seguintes mensagens:
+            <ul>
+              <li>"A Proteção de Recursos do Windows não encontrou nenhuma violação de integridade." - Nenhum problema foi encontrado.</li>
+              <li>"A Proteção de Recursos do Windows encontrou arquivos corrompidos e os reparou com êxito." - Problemas foram encontrados e corrigidos.</li>
+              <li>"A Proteção de Recursos do Windows encontrou arquivos corrompidos, mas não conseguiu corrigir alguns deles." - Problemas foram encontrados, mas nem todos puderam ser corrigidos. Nesse caso, prossiga para o uso do DISM.</li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Recuperando arquivos com DISM - Forma Simplificada</h3>
+        <p>
+          O Deployment Imaging Service and Management Tool (DISM) é uma ferramenta poderosa que pode ser usada para reparar a imagem do sistema operacional do Windows. As etapas a seguir descrevem como usar o DISM de forma simplificada, para os usuários que possuem acesso ao Sistema Operaciona (SO). Caso nnão possua, deverá utilizar outro passo a passo.
+        </p>
+        <ul>
+          <li>
+            <strong>Passo 1:</strong> No Prompt de Comando elevado, digite o seguinte comando e pressione <em>Enter</em>:
+            <code class="blocoCodigo">DISM /Online /Cleanup-Image /RestoreHealth</code>
+          </li>
+          <li>
+            <strong>Passo 2:</strong> Aguarde a conclusão do processo. O DISM verificará a integridade da imagem do sistema operacional e tentará reparar quaisquer problemas encontrados.
+          </li>
+          <li>
+            <strong>Passo 3:</strong> Após a conclusão, você verá uma das seguintes mensagens:
+            <ul>
+              <li>"A operação foi concluída com êxito." - A imagem do sistema foi reparada com sucesso.</li>
+              <li>"Erro: 0x800f081f - O arquivo de origem não foi encontrado." - O DISM não conseguiu encontrar os arquivos necessários para reparar a imagem. Nesse caso, você pode precisar fornecer uma fonte alternativa, como um DVD de instalação do Windows ou uma imagem ISO.</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Após executar o DISM, é recomendável executar novamente o comando SFC para garantir que todos os arquivos de sistema foram reparados corretamente, caso o SFC tenha sido finalizado com êxito
+        </p>
+      </article>
+    </section>
+  </main>
+  <script src="/script.js"></script>
+</body>

@@ -6,7 +6,8 @@ artigos.forEach(artigo => {
     dado = artigo.dataset.id;
     if (dado === 'impGpeditWin1011PRO') {
       window.location.replace("/pages/projetos/suporteTecnico/impGpeditWin1011PRO/index.html");
-      console.log("funciona");
+    } else if (dado === 'cmdWin1011ReparoSO') {
+      window.location.replace("/pages/projetos/suporteTecnico/cmdWin1011ReparoSO/index.html");
     }
   })
 })
