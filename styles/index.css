@@ -1,0 +1,14 @@
+main #projetos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .projeto {
+  width: 90%;
+  max-width: 600px;
+  padding: 10px 15px;
+  border: .5px solid white;
+  border-radius: 9px;
+}
