@@ -2,29 +2,29 @@ main {
   padding-top: 10px;
 }
 
-#projetos {
+#cards {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-main .projeto {
+main .card {
   width: 500px;
   padding: 5px 5px 10px 5px;
   border-radius: 5px;
   border: .5px solid azure;
 }
 
-main .projeto h4{
+main .card h4{
   margin: 0px;
   margin-bottom: 10px;
 }
-main .projeto p {
+main .card p {
   margin: 0px;
   padding: 0px 5px;
 }
-main .projeto:hover {
+main .card:hover {
   background-color: rgb(5, 5, 54);
   cursor: pointer;
 }

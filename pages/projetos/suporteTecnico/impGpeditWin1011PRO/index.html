@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles/suporteTecnico/impGpeditWin1011PRO.css">
+  <title>Suporte Técnico</title>
+</head>
+<body>
+  <header id="header"></header>
+  <main>
+    <section class="anotacoes">
+      <article>
+        <h2>Alterar as configurações de impressora pelo Editor de Politicas do Windows</h2>
+        <p>
+          Antes de iniciar, é importante ressaltar que o Editor de Políticas de Grupo (gpedit.msc) está disponível apenas nas edições Pro, Enterprise e Education do Windows 10 e Windows 11. Se você estiver usando a edição Home, essa ferramenta não estará acessível. Entretanto, se você visitar os Post's da Microsoft, verá que há métodos alternativos para acessar o Editor de Políticas de Grupo na edição Home, embora esses métodos não sejam oficialmente suportados pela Microsoft. Para saber mais sobre como, visite o seguinte o link a seguir: <a href="https://learn.microsoft.com/pt-br/answers/questions/4314147/como-instalar-o-gpedit-msc-no-windows-10-gpedit-ms" target="_blank" rel="Como Instalar o GPEDIT.MSC no Windows 10 - GPEDIT.MSC nativo do Windows!!!">https://learn.microsoft.com/pt-br/answers/questions/4314147/como-instalar-o-gpedit-msc-no-windows-10-gpedit-ms</a>.
+        </p>
+        <ul>
+          <li>
+            <strong>Passo 1:</strong> Pressione as teclas <em>Win + R</em> para abrir a caixa de diálogo "Executar". Digite <code>gpedit.msc</code> e pressione <em>Enter</em> ou clique em "OK" para abrir o Editor de Políticas de Grupo Local.
+          </li>
+          <li>
+            <strong>Passo 2:</strong> No Editor de Políticas de Grupo Local, navegue até o seguinte caminho:
+            <code class="blocoCodigo">Configuração do Usuário &gt; Modelos Administrativos &gt; Impressoras</code>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+  <script src="/script.js"></script>
+</body>
