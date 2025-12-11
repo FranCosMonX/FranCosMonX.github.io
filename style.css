@@ -138,6 +138,13 @@ main h4,
 main h5,
 main h6 {
   text-align: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+main p {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 main a,
@@ -149,11 +156,15 @@ main code {
   background-color: rgba(25, 25, 85, 0.652);
   padding: 2px 5px;
   border-radius: 5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 main .blocoCodigo {
   display: block;
   padding: 10px 20px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 ::-webkit-scrollbar {
