@@ -1,9 +1,13 @@
 import { Typography } from '@mui/material'
 import './App.css'
+import MyBody from './components/MyBody'
 
 function App() {
   return (
-    <Typography>Hello world</Typography>
+    <MyBody>
+      <Typography>Aqui ficará o menu</Typography>
+      <Typography>Hello world</Typography>
+    </MyBody>
   )
 }
 
