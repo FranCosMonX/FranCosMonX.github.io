@@ -1,13 +1,11 @@
-import { Box, Button, Divider, Typography } from "@mui/material"
+import { Box, Divider, Typography } from "@mui/material"
 import MyBody from "../components/MyBody"
 import MyContainer from "../components/MyContainer"
 import MyMenu from "../components/MyMenu"
 import type { FC } from "react"
-import { useNavigate } from "react-router-dom"
 import MyCard from "../components/MyCard"
 
 const Pagina_Inicio: FC = () => {
-  const navigate = useNavigate()
 
   return (
     <MyBody>
