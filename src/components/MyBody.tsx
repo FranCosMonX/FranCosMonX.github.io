@@ -1,20 +1,23 @@
-import { Container, type SxProps } from "@mui/material"
-import type { Breakpoint, Theme } from "@mui/material/styles";
-import type { FC, ReactNode } from "react"
+import { Container } from "@mui/material";
+import type { ReactNode } from "react";
 
-interface MyBodyParams{
+interface MyBodyParams {
   children?: ReactNode;
-  sx?: SxProps<Theme> | undefined;
-  maxWidth?: false | Breakpoint | undefined;
-  className?: string;
 }
 
-const MyBody: FC <MyBodyParams> = ({className, children, sx, maxWidth}) => {
+const MyBody: React.FC<MyBodyParams> = ({ children }) => {
   return (
-    <Container className={className} maxWidth={!maxWidth ? 'xs' : maxWidth} sx={sx} >
+    <Container disableGutters maxWidth={'xl'} sx={{
+      minWidth: '100vw', 
+      height: '100vh', 
+      backgroundColor: 'white', 
+      color: 'black',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       {children}
     </Container>
   )
 }
 
-export default MyBody
+export default MyBody;
