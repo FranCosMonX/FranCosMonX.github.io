@@ -1,9 +1,12 @@
 import type { FC } from "react";
 import MyMenuList from "./MyMenuList";
 import { Box, ListItemText, MenuItem } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 const MyMenu:FC = () => {
+  const navigate = useNavigate()
+
   return (
     <Box sx={{
       height: '100%',
@@ -14,13 +17,13 @@ const MyMenu:FC = () => {
     }}>
       <MyMenuList>
         <MenuItem sx={{border: '.8px solid var(--social-bg)', borderRadius: '25%'}}>
-          <ListItemText title="Voltar ao Inicio">FranCosMonX</ListItemText>
+          <ListItemText title="Voltar ao Inicio" onClick={() => navigate('/')} >FranCosMonX</ListItemText>
         </MenuItem>
         <MenuItem sx={{':hover': {backgroundColor: 'var(--accent-bg)'}}}>
           <ListItemText title="Projetos">Projetos</ListItemText>
         </MenuItem>
         <MenuItem sx={{':hover': {backgroundColor: 'var(--accent-bg)'}}}>
-          <ListItemText title="Pesquisas">Pesquisas</ListItemText>
+          <ListItemText title="Pesquisas" onClick={(() => navigate('/pesquisas'))} >Pesquisas</ListItemText>
         </MenuItem>
         <MenuItem sx={{':hover': {backgroundColor: 'var(--accent-bg)'}}}>
           <ListItemText title="Apps">Apps</ListItemText>
