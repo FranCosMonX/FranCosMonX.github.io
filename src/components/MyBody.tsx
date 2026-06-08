@@ -10,10 +10,10 @@ const MyBody: React.FC<MyBodyParams> = ({ children }) => {
     <Container disableGutters maxWidth={'xl'} sx={{
       minWidth: '100vw', 
       height: '100vh', 
-      backgroundColor: 'white', 
-      color: 'black',
+      color: 'var(--text)',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'row',
+      backgroundColor: 'var(--bg)'
     }}>
       {children}
     </Container>
