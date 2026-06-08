@@ -3,16 +3,15 @@ import MyMenuList from "./MyMenuList";
 import { Box, ListItemText, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-
 const MyMenu:FC = () => {
   const navigate = useNavigate()
 
   return (
     <Box sx={{
       height: '100%',
-      width: '180px',
-      paddingLeft: '10px',
-      paddingRight: '5px',
+      minWidth: '180px',
+      marginLeft: '10px',
+      marginRight: '5px',
       borderRight: '1px solid var(--accent-bg)'
     }}>
       <MyMenuList>
