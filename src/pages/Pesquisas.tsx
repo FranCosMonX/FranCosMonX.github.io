@@ -3,6 +3,7 @@ import MyBody from "../components/MyBody"
 import MyContainer from "../components/MyContainer"
 import MyMenu from "../components/MyMenu"
 import type { FC } from "react"
+import Formulario from "./Formulario"
 
 const Pesquisas_Pagina: FC = () => {
   return (
@@ -10,6 +11,8 @@ const Pesquisas_Pagina: FC = () => {
       <MyMenu />
       <MyContainer>
         <Typography>Aqui irá conter uma lista de pesquisas podendo ter formulários para serem preenchidoso.</Typography>
+
+        <Formulario />
       </MyContainer>
     </MyBody>
   )
