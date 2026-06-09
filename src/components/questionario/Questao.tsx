@@ -5,12 +5,14 @@ import MyTextField from "./MyTextField";
 
 interface QuestaoParams {
   pergunta: string;
+  tipo_resposta: string | number;
   resposta_objetiva?: boolean;
   opcoes_resposta?: string[];
-  resposta_callback: (resposta: string) => void
+  resposta_callback: (resposta: string | number) => void
+  campo_obrigatorio: boolean
 }
 
-const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback}) => {
+const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback, campo_obrigatorio, tipo_resposta}) => {
   const [pergunta_iniciada, set_pergunta_iniciada] = useState(false)
   const [opcaoo_ativa, set_opcao_ativa] = useState<string | null>(null)
   const [input_text_field, set_input_text_field] = useState("")
@@ -31,12 +33,15 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
       color: 'var(--text)',
       width: '100%',
       padding: '20px',
+      paddingTop: '10px',
       display: 'flex',
       flexDirection: 'column',
       gap: '7px',
-      borderRadius: '13px'
+      borderRadius: '13px',
+      position: 'relative'
     }}>
-      <Typography variant="body1" align="justify">{pergunta}</Typography>
+      {campo_obrigatorio && <span className="campo_obrigatorio">obrigatório</span>}
+      <Typography sx={{marginTop: '20px'}} variant="body1" align="justify">{pergunta}</Typography>
       <Divider sx={{backgroundColor: 'var(--text)', width: '100%'}} />
       {
         resposta_objetiva != undefined && pergunta_iniciada && resposta_objetiva && opcoes_resposta != undefined && opcoes_resposta.length > 0 && 
@@ -71,7 +76,8 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
       }
       {
         resposta_objetiva != undefined && pergunta_iniciada && !resposta_objetiva &&
-        <MyTextField 
+        <MyTextField
+          type={tipo_resposta == "number" ? "number" : "string"}
           variant="outlined"
           value={input_text_field}
           onChange={(e) => set_input_text_field(e.target.value)}

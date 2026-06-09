@@ -2,6 +2,24 @@
   box-sizing: border-box;
 }
 
+.formularios {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 8px;
+  width: 100%;
+}
+
+.campo_obrigatorio {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  left: 2;
+  top: 2;
+  color: rgba(255, 0, 0, 0.441);
+}
+
 .link_router {
   color: #1976d2;
   text-decoration-color: var(--accent);
