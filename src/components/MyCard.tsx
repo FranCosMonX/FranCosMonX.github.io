@@ -1,9 +1,12 @@
 import { Card, CardContent, CardHeader, Divider, Link, Typography } from "@mui/material";
-import { Fragment, type FC } from "react";
+
+import { type FC } from "react";
+import { Link as RouteLink } from "react-router-dom";
 
 interface SitesParams {
   nome: string;
   href: string;
+  href_externo: boolean;
 }
 
 interface MyCard {
@@ -38,17 +41,25 @@ const MyCard : FC<MyCard> = ({titulo, conteudo, data_modificacao, autor,sites}) 
           Links úteis: {sites != undefined && 
             sites?.map((site, index) => {
               if (sites.length == 1 || sites.length - 1 == index){
-                return (
-                  <Fragment>
+                if (site.href_externo){
+                  return (
                     <Link href={site.href}>{site.nome}.</Link>
-                  </Fragment>
-                )
+                  )
+                }else{
+                  return (
+                    <RouteLink className="link_router" to={site.href}>{site.nome}.</RouteLink>
+                  )
+                }
               } else {
-                return (
-                  <Fragment>
+                if (site.href_externo){
+                  return (
                     <Link href={site.href}>{site.nome}, </Link>
-                  </Fragment>
-                )
+                  )
+                } else{
+                  return (
+                    <RouteLink className="link_router" to={site.href}>{site.nome}, </RouteLink>
+                  )
+                }
               }
             })}
         </Typography>

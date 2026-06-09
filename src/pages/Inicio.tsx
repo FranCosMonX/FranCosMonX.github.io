@@ -10,7 +10,7 @@ const Pagina_Inicio: FC = () => {
   return (
     <MyBody>
       <MyMenu />
-      <MyContainer maxWidth={"xl"}>
+      <MyContainer maxWidth={"md"}>
         <Box sx={{
           paddingTop: '30px',
           width: '100%',
@@ -24,8 +24,8 @@ const Pagina_Inicio: FC = () => {
             conteudo="Protótipo de aplicação para ser apresentado como TCC. Focando em pessoas que queiram criar sistemas embarcados sem dominar muito o assunto. O mesmo atualmente está em etapa de teste para as funcionalidades já implementadas." 
             data_modificacao="08/06/2026 ás 17:15"
             sites={[
-              {nome: 'Backend CCA Mic', href: 'https://github.com/FranCosMonX/TCC-CCA-MIC-BKend'},
-              {nome: 'Frontend CCA Mic', href: 'https://github.com/FranCosMonX/TCC-CCA-MIC-ftend'}
+              {nome: 'Backend CCA Mic', href: 'https://github.com/FranCosMonX/TCC-CCA-MIC-BKend', href_externo: true},
+              {nome: 'Frontend CCA Mic', href: 'https://github.com/FranCosMonX/TCC-CCA-MIC-ftend', href_externo: true}
             ]}
           />
         </Box>  

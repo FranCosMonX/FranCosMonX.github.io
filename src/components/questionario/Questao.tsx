@@ -21,6 +21,10 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
     }
   }, [pergunta_iniciada])
 
+  useEffect (() => {
+    resposta_callback(input_text_field)
+  }, [input_text_field])
+
   return (
     <Box sx={{
       backgroundColor: 'var(--accent-bg)',
@@ -67,17 +71,11 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
       }
       {
         resposta_objetiva != undefined && pergunta_iniciada && !resposta_objetiva &&
-        <Box>
-          <MyTextField 
-          variant="standard"
-        />
-        <MyTextField 
-          variant="filled"
-        />
         <MyTextField 
           variant="outlined"
+          value={input_text_field}
+          onChange={(e) => set_input_text_field(e.target.value)}
         />
-        </Box>
       }
     </Box>
   )
