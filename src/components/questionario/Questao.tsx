@@ -1,0 +1,86 @@
+import { Box, Divider, List, ListItem, Typography } from "@mui/material"
+import { useEffect, useState, type FC } from "react"
+import MyButton from "./MyButton";
+import MyTextField from "./MyTextField";
+
+interface QuestaoParams {
+  pergunta: string;
+  resposta_objetiva?: boolean;
+  opcoes_resposta?: string[];
+  resposta_callback: (resposta: string) => void
+}
+
+const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback}) => {
+  const [pergunta_iniciada, set_pergunta_iniciada] = useState(false)
+  const [opcaoo_ativa, set_opcao_ativa] = useState<string | null>(null)
+  const [input_text_field, set_input_text_field] = useState("")
+  
+  useEffect(() => {
+    if(!pergunta_iniciada){
+      set_pergunta_iniciada(true)
+    }
+  }, [pergunta_iniciada])
+
+  return (
+    <Box sx={{
+      backgroundColor: 'var(--accent-bg)',
+      color: 'var(--text)',
+      width: '100%',
+      padding: '20px',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '7px',
+      borderRadius: '13px'
+    }}>
+      <Typography variant="body1" align="justify">{pergunta}</Typography>
+      <Divider sx={{backgroundColor: 'var(--text)', width: '100%'}} />
+      {
+        resposta_objetiva != undefined && pergunta_iniciada && resposta_objetiva && opcoes_resposta != undefined && opcoes_resposta.length > 0 && 
+        <List sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          gap: '5px',
+          paddingTop: '7px'
+        }}>
+          {opcoes_resposta.map((opcao, index) => {
+            return (
+              <ListItem key={index}>
+                <MyButton
+                  variant={opcaoo_ativa === opcao ? "contained" : "outlined"} // muda estilo se ativo
+                  onClick={() => {
+                    resposta_callback(opcao)
+                    set_opcao_ativa(opcao)
+                  }}
+                  sx={{
+                    width: '100%',
+                    backgroundColor: opcaoo_ativa === opcao ? 'var(--social-bg)' : 'var(--accent-bg)',
+                    border: opcaoo_ativa === opcao ? '1px solid var(--text)' : 'var(--accent-bg)',
+                    color: 'var(--text)'
+                  }}>
+                  {opcao}
+                </MyButton>
+              </ListItem>
+            )
+          })}
+        </List>
+      }
+      {
+        resposta_objetiva != undefined && pergunta_iniciada && !resposta_objetiva &&
+        <Box>
+          <MyTextField 
+          variant="standard"
+        />
+        <MyTextField 
+          variant="filled"
+        />
+        <MyTextField 
+          variant="outlined"
+        />
+        </Box>
+      }
+    </Box>
+  )
+}
+
+export default Questao
