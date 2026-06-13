@@ -1,5 +1,5 @@
 import { useEffect, type FC } from "react";
-// import { supabase } from "../../supabase";
+import { supabase } from "../../supabase";
 import MyButton from "../components/questionario/MyButton";
 import Questao from "../components/questionario/Questao";
 import { type AREA_ATUACAO, type CONHECIMENTO_NV5, type CONCORDANCIA_NV5, AREA_ATUACAO_LIST, CONCORDANCIA_NV5_LIST, CONHECIMENTO_NV5_LIST, SIM_NAO_LIST } from '../types/quetionario';
@@ -79,8 +79,20 @@ const Formulario: FC = () => {
     register("funcionalidades_futuras");
   }, [register]);
 
-  const onSubmit = (data: Avaliacao_v1_ccamic_FormOutput) => {
-    console.log(data);
+  const onSubmit = async (e: Avaliacao_v1_ccamic_FormOutput) => {
+    console.log(e)
+    const { data, error } = await supabase
+      .from("cca_mic_satisfacao") 
+      .insert([e]); 
+
+    if (error) {
+      console.error(error);
+      alert("Erro ao salvar");
+    } else {
+      console.log(e);
+      alert("Dados salvos com sucesso!");
+      console.log(data);
+    }
   };
   // async function handleSubmit(e: React.FormEvent) {
   //   e.preventDefault();
@@ -114,19 +126,19 @@ const Formulario: FC = () => {
   //   //   contador ++;
   //   // }
 
-  //   console.log(gabarito)
-  //   // const { data, error } = await supabase
-  //   //   .from("cca_mic_satisfacao") 
-  //   //   .insert([gabarito]); 
+    // console.log(gabarito)
+    // const { data, error } = await supabase
+    //   .from("cca_mic_satisfacao") 
+    //   .insert([gabarito]); 
 
-  //   // if (error) {
-  //   //   console.error(error);
-  //   //   alert("Erro ao salvar");
-  //   // } else {
-  //   //   console.log(gabarito);
-  //   //   alert("Dados salvos com sucesso!");
-  //   //   console.log(data);
-  //   // }
+    // if (error) {
+    //   console.error(error);
+    //   alert("Erro ao salvar");
+    // } else {
+    //   console.log(gabarito);
+    //   alert("Dados salvos com sucesso!");
+    //   console.log(data);
+    // }
   // }
 
   return (
