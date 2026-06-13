@@ -8,12 +8,13 @@ interface QuestaoParams {
   tipo_resposta: string | number;
   resposta_objetiva?: boolean;
   opcoes_resposta?: string[];
-  resposta_callback: (resposta: any) => void
-  campo_obrigatorio: boolean
-  erro?: string
+  resposta_callback: (resposta: any) => void;
+  campo_obrigatorio: boolean;
+  error?: boolean;
+  helpertext?: string;
 }
 
-const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback, campo_obrigatorio, tipo_resposta, erro}) => {
+const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback, campo_obrigatorio, tipo_resposta, error, helpertext}) => {
   const [pergunta_iniciada, set_pergunta_iniciada] = useState(false)
   const [opcaoo_ativa, set_opcao_ativa] = useState<string | null>(null)
   const [input_text_field, set_input_text_field] = useState("")
@@ -83,6 +84,24 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
           value={input_text_field}
           onChange={(e) => set_input_text_field(e.target.value)}
         />
+      }
+      {
+        error != undefined && error &&
+        <Box sx={{
+          backgroundColor: ('var(--error-bg)'),
+          borderRadius: '19px',
+          padding: '5px'
+        }}
+        >
+          {
+            helpertext != undefined && helpertext?.length > 0 && 
+            <Typography variant="body1">{helpertext}</Typography>
+          }
+          {
+            (helpertext == undefined || helpertext.length == 0) && 
+            <Typography variant="body1">Houve um problema ao responder a questão. Tente Novamente.</Typography>
+          }
+        </Box>
       }
     </Box>
   )

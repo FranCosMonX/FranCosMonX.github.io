@@ -3,7 +3,8 @@
   --text-h: #1a1a1a;        
   --bg: #f5f5f5;               
   --border: #dcdcdc;         
-  --code-bg: #eaeaea;          
+  --code-bg: #eaeaea;
+  --error-bg: rgba(255, 81, 0, 0.325);          
   --accent: #2b46cd90;            
   --accent-bg: rgba(12, 27, 195, 0.119);
   --accent-border: rgba(59, 92, 255, 0.5);

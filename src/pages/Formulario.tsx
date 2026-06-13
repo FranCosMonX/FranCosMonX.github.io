@@ -44,9 +44,6 @@ export interface QuestFormParams {
 }
 
 const Formulario: FC = () => {
-  
-
-  // const [gabarito, setGabarito] = useState<QuestFormParams>()
   const { handleSubmit, setValue, register, formState: {errors} } = useForm<
     Avaliacao_v1_ccamic_FormInput,
     any,
@@ -92,41 +89,6 @@ const Formulario: FC = () => {
   //     return;
   //   }
     
-  //   const lista = [
-  //     gabarito.area_atuacao,
-  //     gabarito.nivel_conhecimento_programacao,
-  //     gabarito.nivel_conhecimento_microcontrolador,
-
-  //     gabarito.facil_compreender,
-  //     gabarito.opcoes_apresentadas_sao_claras,
-  //     gabarito.facil_configurar_ambiente,
-  //     gabarito.navegacao_intuitiva,
-
-  //     gabarito.ia_compreendeu_requisitos,
-  //     gabarito.ia_gerou_resposta_coerente,
-  //     gabarito.audio_foi_usado,
-
-  //     gabarito.codigo_atendeu_necessidades,
-  //     gabarito.codigo_facil_compreencao,
-  //     gabarito.codigo_muitas_alteracoes_manuais,
-
-  //     gabarito.compilacao_projeto_util,
-  //     gabarito.gravacao_no_microcontrolador_util,
-
-  //     gabarito.ajudou_entender_desenvolvimento_mic,
-  //     gabarito.reduziu_dificuldade_tecnica_no_desenvolvimento,
-  //     gabarito.auxiliou_na_aprendizagem,
-
-  //     gabarito.esta_satisfeita_com_aplicacao,
-  //     gabarito.utilizaria_projeto_futuro,
-  //     gabarito.recomendaria_para_pessoas,
-
-  //     gabarito.nota_atribuida_aplicacao,
-
-  //     gabarito.o_que_melhoraria,
-  //     gabarito.funcionalidades_futuras
-  //   ];
-
   //   // let contador = 0;
   //   // for (let i of lista){
   //   //   try{
@@ -177,15 +139,13 @@ const Formulario: FC = () => {
         opcoes_resposta={AREA_ATUACAO_LIST}
         resposta_callback={(resposta) => {
           setValue('area_atuacao', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   area_atuacao: typeof resposta === "string" ? resposta : undefined
-          // })
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.area_atuacao}
+        helpertext={errors.area_atuacao?.message}
       />
       <Questao
         campo_obrigatorio={true}
@@ -195,15 +155,13 @@ const Formulario: FC = () => {
         opcoes_resposta={CONHECIMENTO_NV5_LIST}
         resposta_callback={(resposta) => {
           setValue('nivel_conhecimento_programacao', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   nivel_conhecimento_programacao: typeof resposta === "string" && CONHECIMENTO_NV5_LIST.includes(resposta) ? String(resposta) : undefined
-          // })
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.nivel_conhecimento_programacao}
+        helpertext={errors.nivel_conhecimento_programacao?.message}
       />
       <Questao 
         campo_obrigatorio={true}
@@ -213,15 +171,13 @@ const Formulario: FC = () => {
         opcoes_resposta={CONHECIMENTO_NV5_LIST}
         resposta_callback={(resposta) => {
           setValue('nivel_conhecimento_microcontrolador', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   nivel_conhecimento_microcontrolador: typeof resposta === "string" && CONHECIMENTO_NV5_LIST.includes(resposta) ? String(resposta) : undefined
-          // })
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.nivel_conhecimento_microcontrolador}
+        helpertext={errors.nivel_conhecimento_microcontrolador?.message}
       />
       <Questao 
         campo_obrigatorio={true}
@@ -231,17 +187,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('facil_compreender', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   facil_compreender: resposta != undefined && typeof resposta === "string" ?
-          //     resposta == "Sim" ? true : false
-          //   : undefined
-          // })
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.facil_compreender}
+        helpertext={errors.facil_compreender?.message}
       />
       <Questao
         campo_obrigatorio={true}
@@ -251,18 +203,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('opcoes_apresentadas_sao_claras', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   opcoes_apresentadas_sao_claras:
-          //     resposta != undefined && typeof resposta === "string"
-          //     ? resposta == "Sim"
-          //     : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.opcoes_apresentadas_sao_claras}
+        helpertext={errors.opcoes_apresentadas_sao_claras?.message}
       />
 
       <Questao
@@ -273,18 +220,13 @@ const Formulario: FC = () => {
         opcoes_resposta={CONCORDANCIA_NV5_LIST}
         resposta_callback={(resposta) => {
           setValue('facil_configurar_ambiente', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   facil_configurar_ambiente:
-          //     resposta != undefined && typeof resposta === "string" && CONCORDANCIA_NV5_LIST.includes(resposta)
-          //       ? resposta
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.facil_configurar_ambiente}
+        helpertext={errors.facil_configurar_ambiente?.message}
       />
 
       <Questao
@@ -295,18 +237,13 @@ const Formulario: FC = () => {
         opcoes_resposta={CONCORDANCIA_NV5_LIST}
         resposta_callback={(resposta) => {
           setValue('navegacao_intuitiva', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   navegacao_intuitiva:
-          //     resposta != undefined && typeof resposta === "string" && CONCORDANCIA_NV5_LIST.includes(resposta)
-          //       ? resposta
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.navegacao_intuitiva}
+        helpertext={errors.navegacao_intuitiva?.message}
       />
 
       <Questao
@@ -317,18 +254,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('ia_compreendeu_requisitos', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   ia_compreendeu_requisitos:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.ia_compreendeu_requisitos}
+        helpertext={errors.ia_compreendeu_requisitos?.message}
       />
 
       <Questao
@@ -339,18 +271,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('ia_gerou_resposta_coerente', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   ia_gerou_resposta_coerente:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.ia_gerou_resposta_coerente}
+        helpertext={errors.ia_gerou_resposta_coerente?.message}
       />
 
       <Questao
@@ -361,18 +288,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('audio_foi_usado', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   audio_foi_usado:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.audio_foi_usado}
+        helpertext={errors.audio_foi_usado?.message}
       />
 
       <Questao
@@ -383,18 +305,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('codigo_atendeu_necessidades', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   codigo_atendeu_necessidades:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.codigo_atendeu_necessidades}
+        helpertext={errors.codigo_atendeu_necessidades?.message}
       />
 
       <Questao
@@ -405,18 +322,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('codigo_facil_compreencao', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   codigo_facil_compreencao:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.codigo_facil_compreencao}
+        helpertext={errors.codigo_facil_compreencao?.message}
       />
 
       <Questao
@@ -427,18 +339,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('codigo_muitas_alteracoes_manuais', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   codigo_muitas_alteracoes_manuais:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.codigo_muitas_alteracoes_manuais}
+        helpertext={errors.codigo_muitas_alteracoes_manuais?.message}
       />
 
       <Questao
@@ -449,18 +356,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('compilacao_projeto_util', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   compilacao_projeto_util:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.compilacao_projeto_util}
+        helpertext={errors.compilacao_projeto_util?.message}
       />
 
       <Questao
@@ -471,18 +373,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('gravacao_no_microcontrolador_util', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   gravacao_no_microcontrolador_util:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.gravacao_no_microcontrolador_util}
+        helpertext={errors.gravacao_no_microcontrolador_util?.message}
       />
 
       <Questao
@@ -493,18 +390,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('ajudou_entender_desenvolvimento_mic', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   ajudou_entender_desenvolvimento_mic:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.ajudou_entender_desenvolvimento_mic}
+        helpertext={errors.ajudou_entender_desenvolvimento_mic?.message}
       />
 
       <Questao
@@ -515,18 +407,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('reduziu_dificuldade_tecnica_no_desenvolvimento', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   reduziu_dificuldade_tecnica_no_desenvolvimento:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.reduziu_dificuldade_tecnica_no_desenvolvimento}
+        helpertext={errors.reduziu_dificuldade_tecnica_no_desenvolvimento?.message}
       />
 
       <Questao
@@ -537,18 +424,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('auxiliou_na_aprendizagem', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   auxiliou_na_aprendizagem:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.auxiliou_na_aprendizagem}
+        helpertext={errors.auxiliou_na_aprendizagem?.message}
       />
 
       <Questao
@@ -559,18 +441,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('esta_satisfeita_com_aplicacao', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   esta_satisfeita_com_aplicacao:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.esta_satisfeita_com_aplicacao}
+        helpertext={errors.esta_satisfeita_com_aplicacao?.message}
       />
 
       <Questao
@@ -581,18 +458,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('utilizaria_projeto_futuro', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   utilizaria_projeto_futuro:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta == "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.utilizaria_projeto_futuro}
+        helpertext={errors.utilizaria_projeto_futuro?.message}
       />
 
       <Questao
@@ -603,18 +475,13 @@ const Formulario: FC = () => {
         opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setValue('recomendaria_para_pessoas', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   recomendaria_para_pessoas:
-          //     resposta != undefined && typeof resposta === "string"
-          //       ? resposta === "Sim"
-          //       : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.recomendaria_para_pessoas}
+        helpertext={errors.recomendaria_para_pessoas?.message}
       />
 
       <Questao
@@ -625,28 +492,13 @@ const Formulario: FC = () => {
         resposta_callback={(resposta) => {
           setValue('nota_atribuida_aplicacao', 
             typeof resposta == 'string' && resposta.length > 0 ? Number(resposta) : NaN, {
-            shouldValidate: true,
-            shouldDirty: true,
-            shouldTouch: true,
-        })
-          // console.log(typeof resposta)
-          // try {
-          //   setGabarito({
-          //     ...gabarito,
-          //     nota_atribuida_aplicacao:
-          //       resposta != undefined  && typeof resposta == 'number' 
-          //       ? resposta
-          //       : typeof resposta == 'string'
-          //         ? Number(resposta)
-          //         : undefined
-          //   });
-          // } catch {
-          //   setGabarito({
-          //     ...gabarito,
-          //     nota_atribuida_aplicacao: undefined
-          //   });
-          // }
+              shouldValidate: true,
+              shouldDirty: true,
+              shouldTouch: true,
+          })
         }}
+        error={!!errors.nota_atribuida_aplicacao}
+        helpertext={errors.nota_atribuida_aplicacao?.message}
       />
 
       <Questao
@@ -655,17 +507,14 @@ const Formulario: FC = () => {
         resposta_objetiva={false}
         tipo_resposta={'string'}
         resposta_callback={(resposta) => {
-          setValue('o_que_melhoraria', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   o_que_melhoraria:
-          //     typeof resposta === "string" ? resposta : undefined
-          // });
+            setValue('o_que_melhoraria', resposta, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.o_que_melhoraria}
+        helpertext={errors.o_que_melhoraria?.message}
       />
 
       <Questao
@@ -675,16 +524,13 @@ const Formulario: FC = () => {
         tipo_resposta={'string'}
         resposta_callback={(resposta) => {
           setValue('funcionalidades_futuras', resposta, {
-          shouldValidate: true,
-          shouldDirty: true,
-          shouldTouch: true,
-        })
-          // setGabarito({
-          //   ...gabarito,
-          //   funcionalidades_futuras:
-          //     typeof resposta === "string" ? resposta : undefined
-          // });
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
         }}
+        error={!!errors.funcionalidades_futuras}
+        helpertext={errors.funcionalidades_futuras?.message}
       />
       
       <MyButton variant="contained" type={"submit"} onClick={() =>  console.log(errors)} >ENVIAR</MyButton>
