@@ -8,11 +8,12 @@ interface QuestaoParams {
   tipo_resposta: string | number;
   resposta_objetiva?: boolean;
   opcoes_resposta?: string[];
-  resposta_callback: (resposta: string | number) => void
+  resposta_callback: (resposta: any) => void
   campo_obrigatorio: boolean
+  erro?: string
 }
 
-const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback, campo_obrigatorio, tipo_resposta}) => {
+const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_resposta, resposta_callback, campo_obrigatorio, tipo_resposta, erro}) => {
   const [pergunta_iniciada, set_pergunta_iniciada] = useState(false)
   const [opcaoo_ativa, set_opcao_ativa] = useState<string | null>(null)
   const [input_text_field, set_input_text_field] = useState("")
