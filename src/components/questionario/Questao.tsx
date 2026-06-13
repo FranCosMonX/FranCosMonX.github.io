@@ -58,6 +58,10 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
             return (
               <ListItem key={index}>
                 <MyButton
+                  onSelect={() => {
+                    resposta_callback(opcao)
+                    set_opcao_ativa(opcao)
+                  }}
                   variant={opcaoo_ativa === opcao ? "contained" : "outlined"} // muda estilo se ativo
                   onClick={() => {
                     resposta_callback(opcao)
