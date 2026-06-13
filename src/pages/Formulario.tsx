@@ -2,45 +2,46 @@ import { useState, type FC } from "react";
 import { supabase } from "../../supabase";
 import MyButton from "../components/questionario/MyButton";
 import Questao from "../components/questionario/Questao";
+import { type AREA_ATUACAO, type CONHECIMENTO_NV5, type CONCORDANCIA_NV5, AREA_ATUACAO_LIST, type SIM_NAO, CONCORDANCIA_NV5_LIST, CONHECIMENTO_NV5_LIST, SIM_NAO_LIST } from '../types/quationario';
 
 export interface QuestFormParams {
-  area_atuacao?: string | null;
-  nivel_conhecimento_programacao?: string | null;
-  nivel_conhecimento_microcontrolador?: string | null;
+  area_atuacao?: AREA_ATUACAO;
+  nivel_conhecimento_programacao?: CONHECIMENTO_NV5;
+  nivel_conhecimento_microcontrolador?: CONHECIMENTO_NV5;
 
-  facil_compreender?: boolean | null;
-  opcoes_apresentadas_sao_claras?: boolean | null;
-  facil_configurar_ambiente?: boolean | null;
-  navegacao_intuitiva?: boolean | null;
+  facil_compreender?: boolean;
+  opcoes_apresentadas_sao_claras?: boolean;
+  facil_configurar_ambiente?: CONCORDANCIA_NV5;
+  navegacao_intuitiva?: CONCORDANCIA_NV5;
 
-  ia_compreendeu_requisitos?: boolean | null;
-  ia_gerou_resposta_coerente?: boolean | null;
-  audio_foi_usado?: boolean | null;
+  ia_compreendeu_requisitos?: boolean;
+  ia_gerou_resposta_coerente?: boolean;
+  audio_foi_usado?: boolean;
 
-  codigo_atendeu_necessidades?: boolean | null;
-  codigo_facil_compreencao?: boolean | null;
-  codigo_muitas_alteracoes_manuais?: boolean | null;
+  codigo_atendeu_necessidades?: boolean;
+  codigo_facil_compreencao?: boolean;
+  codigo_muitas_alteracoes_manuais?: boolean;
 
-  compilacao_projeto_util?: boolean | null;
-  gravacao_no_microcontrolador_util?: boolean | null;
+  compilacao_projeto_util?: boolean;
+  gravacao_no_microcontrolador_util?: boolean;
 
-  ajudou_entender_desenvolvimento_mic?: boolean | null;
-  reduziu_dificuldade_tecnica_no_desenvolvimento?: boolean | null;
-  auxiliou_na_aprendizagem?: boolean | null;
+  ajudou_entender_desenvolvimento_mic?: boolean;
+  reduziu_dificuldade_tecnica_no_desenvolvimento?: boolean;
+  auxiliou_na_aprendizagem?: boolean;
 
-  esta_satisfeita_com_aplicacao?: boolean | null;
-  utilizaria_projeto_futuro?: boolean | null;
-  recomendaria_para_pessoas?: boolean | null;
+  esta_satisfeita_com_aplicacao?: boolean;
+  utilizaria_projeto_futuro?: boolean;
+  recomendaria_para_pessoas?: boolean;
 
-  nota_atribuida_aplicacao?: number | null;
+  nota_atribuida_aplicacao?: number;
 
-  o_que_melhoraria?: string | null;
-  funcionalidades_futuras?: string | null;
+  o_que_melhoraria?: string;
+  funcionalidades_futuras?: string;
 }
 
 const Formulario: FC = () => {
   const [gabarito, setGabarito] = useState<QuestFormParams>()
-
+  
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!gabarito) {
@@ -83,40 +84,44 @@ const Formulario: FC = () => {
       gabarito.funcionalidades_futuras
     ];
 
-    for (let i of lista){
-      try{
-        if (i === undefined || i === null || String(i + "").length <= 0) {
-          alert('Erro ao Mandar solicitação. faltou responder um campo')
-          return;
-        }
-        if (typeof i === "string" && i.length <= 0){
-          alert('Erro ao Mandar solicitação. faltou responder um campo')
-          return;
-        }
-        if (typeof i == "number" && i >= 0 && i <= 10){
-          alert('O valor deve estar entre 0 e 10.')
-          return;
-        }
-      }
-      catch (e){
-        alert('Problema inesperado nas checagens dos campos')
-        return;
-      }
-      
-    }
+    // let contador = 0;
+    // for (let i of lista){
+    //   try{
+    //     if (i === undefined || i === null) {
+    //       alert('Erro ao Mandar solicitação. faltou responder um campo')
+    //       console.error(contador)
+    //       return;
+    //     }
+    //     if (typeof i === "string" && i.length <= 0){
+    //       alert('Erro ao Mandar solicitação. faltou responder um campo')
+    //       console.error(contador)
+    //       return;
+    //     }
+    //     if (typeof i == "number" && i >= 0 && i <= 10){
+    //       alert('O valor deve estar entre 0 e 10.')
+    //       return;
+    //     }
+    //   }
+    //   catch (e){
+    //     alert('Problema inesperado nas checagens dos campos')
+    //     return;
+    //   }
+    //   contador ++;
+    // }
 
-    const { data, error } = await supabase
-      .from("cca_mic_satisfacao") 
-      .insert([gabarito]); 
+    console.log(gabarito)
+    // const { data, error } = await supabase
+    //   .from("cca_mic_satisfacao") 
+    //   .insert([gabarito]); 
 
-    if (error) {
-      console.error(error);
-      alert("Erro ao salvar");
-    } else {
-      console.log(gabarito);
-      alert("Dados salvos com sucesso!");
-      console.log(data);
-    }
+    // if (error) {
+    //   console.error(error);
+    //   alert("Erro ao salvar");
+    // } else {
+    //   console.log(gabarito);
+    //   alert("Dados salvos com sucesso!");
+    //   console.log(data);
+    // }
   }
 
   return (
@@ -126,11 +131,11 @@ const Formulario: FC = () => {
         pergunta="Qual sua área de atuação?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Estudante', 'Professor', 'Pesquisador', 'Profissional da indústria', 'Outro']}
+        opcoes_resposta={AREA_ATUACAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
-            area_atuacao: typeof resposta === "string" ? String(resposta) : null
+            area_atuacao: typeof resposta === "string" ? resposta : undefined
           })
         }}
       />
@@ -139,11 +144,11 @@ const Formulario: FC = () => {
         pergunta="Qual seu nível de conhecimento em programação?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Nenhum', 'Básico', 'Intermediário', 'Avançado', 'Especialista']}
+        opcoes_resposta={CONHECIMENTO_NV5_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
-            nivel_conhecimento_programacao: typeof resposta === "string" ? String(resposta) : null
+            nivel_conhecimento_programacao: typeof resposta === "string" && CONHECIMENTO_NV5_LIST.includes(resposta) ? String(resposta) : undefined
           })
         }}
       />
@@ -152,11 +157,11 @@ const Formulario: FC = () => {
         pergunta="Qual seu nível de conhecimento em microcontroladores?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Nenhum', 'Básico', 'Intermediário', 'Avançado', 'Especialista']}
+        opcoes_resposta={CONHECIMENTO_NV5_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
-            nivel_conhecimento_microcontrolador: typeof resposta === "string" ? String(resposta) : null
+            nivel_conhecimento_microcontrolador: typeof resposta === "string" && CONHECIMENTO_NV5_LIST.includes(resposta) ? String(resposta) : undefined
           })
         }}
       />
@@ -165,13 +170,13 @@ const Formulario: FC = () => {
         pergunta="A aplicação foi fácil de compreender?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             facil_compreender: resposta != undefined && typeof resposta === "string" ?
               resposta == "Sim" ? true : false
-            : null
+            : undefined
           })
         }}
       />
@@ -180,14 +185,14 @@ const Formulario: FC = () => {
         pergunta="As opções apresentadas pela aplicação são claras?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             opcoes_apresentadas_sao_claras:
               resposta != undefined && typeof resposta === "string"
-                ? resposta == "Sim"
-                : null
+              ? resposta == "Sim"
+              : undefined
           });
         }}
       />
@@ -197,14 +202,14 @@ const Formulario: FC = () => {
         pergunta="Foi fácil configurar o ambiente de desenvolvimento?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Discordo totalmente','Discordo','Neutro','Concordo','Concordo totalmente']}
+        opcoes_resposta={CONCORDANCIA_NV5_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             facil_configurar_ambiente:
-              resposta != undefined && typeof resposta === "string"
-                ? resposta == "Sim"
-                : null
+              resposta != undefined && typeof resposta === "string" && CONCORDANCIA_NV5_LIST.includes(resposta)
+                ? resposta
+                : undefined
           });
         }}
       />
@@ -214,14 +219,14 @@ const Formulario: FC = () => {
         pergunta="A navegação da aplicação é intuitiva?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Discordo totalmente','Discordo','Neutro','Concordo','Concordo totalmente']}
+        opcoes_resposta={CONCORDANCIA_NV5_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             navegacao_intuitiva:
-              resposta != undefined && typeof resposta === "string"
-                ? resposta == "Sim"
-                : null
+              resposta != undefined && typeof resposta === "string" && CONCORDANCIA_NV5_LIST.includes(resposta)
+                ? resposta
+                : undefined
           });
         }}
       />
@@ -231,14 +236,14 @@ const Formulario: FC = () => {
         pergunta="A IA compreendeu corretamente os requisitos informados?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             ia_compreendeu_requisitos:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -248,14 +253,14 @@ const Formulario: FC = () => {
         pergunta="A IA gerou respostas coerentes com o que foi solicitado?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             ia_gerou_resposta_coerente:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -265,14 +270,14 @@ const Formulario: FC = () => {
         pergunta="Você utilizou a funcionalidade de áudio?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             audio_foi_usado:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -282,14 +287,14 @@ const Formulario: FC = () => {
         pergunta="O código gerado atendeu às necessidades do projeto?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             codigo_atendeu_necessidades:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -299,14 +304,14 @@ const Formulario: FC = () => {
         pergunta="O código gerado foi fácil de compreender?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             codigo_facil_compreencao:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -316,14 +321,14 @@ const Formulario: FC = () => {
         pergunta="O código exigiu muitas alterações manuais?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             codigo_muitas_alteracoes_manuais:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -333,14 +338,14 @@ const Formulario: FC = () => {
         pergunta="A funcionalidade de compilação do projeto foi útil?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             compilacao_projeto_util:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -350,14 +355,14 @@ const Formulario: FC = () => {
         pergunta="A funcionalidade de gravação no microcontrolador foi útil?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             gravacao_no_microcontrolador_util:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -367,14 +372,14 @@ const Formulario: FC = () => {
         pergunta="A aplicação ajudou você a entender melhor o desenvolvimento para microcontroladores?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             ajudou_entender_desenvolvimento_mic:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -384,14 +389,14 @@ const Formulario: FC = () => {
         pergunta="A aplicação reduziu a dificuldade técnica durante o desenvolvimento?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             reduziu_dificuldade_tecnica_no_desenvolvimento:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -401,14 +406,14 @@ const Formulario: FC = () => {
         pergunta="A aplicação auxiliou no processo de aprendizagem?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             auxiliou_na_aprendizagem:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -418,14 +423,14 @@ const Formulario: FC = () => {
         pergunta="Você ficou satisfeito com a aplicação?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             esta_satisfeita_com_aplicacao:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -435,14 +440,14 @@ const Formulario: FC = () => {
         pergunta="Você utilizaria a aplicação em projetos futuros?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             utilizaria_projeto_futuro:
               resposta != undefined && typeof resposta === "string"
                 ? resposta == "Sim"
-                : null
+                : undefined
           });
         }}
       />
@@ -452,14 +457,14 @@ const Formulario: FC = () => {
         pergunta="Você recomendaria a aplicação para outras pessoas?"
         resposta_objetiva={true}
         tipo_resposta={'string'}
-        opcoes_resposta={['Não', 'Sim']}
+        opcoes_resposta={SIM_NAO_LIST}
         resposta_callback={(resposta) => {
           setGabarito({
             ...gabarito,
             recomendaria_para_pessoas:
               resposta != undefined && typeof resposta === "string"
-                ? resposta == "Sim"
-                : null
+                ? resposta === "Sim"
+                : undefined
           });
         }}
       />
@@ -469,12 +474,24 @@ const Formulario: FC = () => {
         pergunta="Qual nota você atribui à aplicação? (0 a 10)"
         resposta_objetiva={false}
         tipo_resposta={'number'}
-        resposta_callback={(resposta) => {
-          setGabarito({
-            ...gabarito,
-            nota_atribuida_aplicacao:
-              resposta != undefined ? Number(resposta) : null
-          });
+        resposta_callback={(resposta: number | string) => {
+          console.log(typeof resposta)
+          try {
+            setGabarito({
+              ...gabarito,
+              nota_atribuida_aplicacao:
+                resposta != undefined  && typeof resposta == 'number' 
+                ? resposta
+                : typeof resposta == 'string'
+                  ? Number(resposta)
+                  : undefined
+            });
+          } catch {
+            setGabarito({
+              ...gabarito,
+              nota_atribuida_aplicacao: undefined
+            });
+          }
         }}
       />
 
@@ -487,7 +504,7 @@ const Formulario: FC = () => {
           setGabarito({
             ...gabarito,
             o_que_melhoraria:
-              typeof resposta === "string" ? resposta : null
+              typeof resposta === "string" ? resposta : undefined
           });
         }}
       />
@@ -501,7 +518,7 @@ const Formulario: FC = () => {
           setGabarito({
             ...gabarito,
             funcionalidades_futuras:
-              typeof resposta === "string" ? resposta : null
+              typeof resposta === "string" ? resposta : undefined
           });
         }}
       />
