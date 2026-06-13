@@ -1,11 +1,14 @@
-import type { FC } from "react"
+import type { FC, ReactNode } from "react"
 import MyBody from "../../components/MyBody"
 import MyMenu from "../../components/MyMenu"
 import MyContainer from "../../components/MyContainer"
 import { Divider, Typography } from "@mui/material"
-import Formulario from "../Formulario"
 
-const Formulario_Satisfacao_1_CCA_MIC: FC = () => {
+interface FormularioParams {
+  children: ReactNode;
+}
+
+const Formulario: FC <FormularioParams> = ({children}) => {
   return (
     <MyBody>
       <MyMenu />
@@ -16,10 +19,10 @@ const Formulario_Satisfacao_1_CCA_MIC: FC = () => {
       }}>
         <Typography variant="h4">Formulário de satisfação</Typography>
         <Divider sx={{height: '2px', backgroundColor: 'var(--accent-bg)', marginTop: '20px', marginBottom: '20px'}} />
-        <Formulario />
+        {children}
       </MyContainer>
     </MyBody>
   )
 }
 
-export default Formulario_Satisfacao_1_CCA_MIC
+export default Formulario;

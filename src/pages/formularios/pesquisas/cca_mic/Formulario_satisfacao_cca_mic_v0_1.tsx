@@ -1,50 +1,14 @@
 import { useEffect, type FC } from "react";
-import { supabase } from "../../supabase";
-import MyButton from "../components/questionario/MyButton";
-import Questao from "../components/questionario/Questao";
-import { type AREA_ATUACAO, type CONHECIMENTO_NV5, type CONCORDANCIA_NV5, AREA_ATUACAO_LIST, CONCORDANCIA_NV5_LIST, CONHECIMENTO_NV5_LIST, SIM_NAO_LIST } from '../types/quetionario';
+import { AREA_ATUACAO_LIST, CONCORDANCIA_NV5_LIST, CONHECIMENTO_NV5_LIST, SIM_NAO_LIST } from '../../../../types/quetionario';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { avaliacao_ccamic_v1_schema, type Avaliacao_v1_ccamic_FormInput, type Avaliacao_v1_ccamic_FormOutput } from "./formularios/pesquisas/cca_mic/schemas/formulario_ccamic_v1.schema";
-// import type z from "zod";
+import { avaliacao_ccamic_v1_schema, type Avaliacao_v1_ccamic_FormInput, type Avaliacao_v1_ccamic_FormOutput } from "./schemas/formulario_ccamic_v1.schema";
+import { supabase } from "../../../../../supabase";
+import Questao from "../../../../components/questionario/Questao";
+import MyButton from "../../../../components/questionario/MyButton";
 
-export interface QuestFormParams {
-  area_atuacao?: AREA_ATUACAO;
-  nivel_conhecimento_programacao?: CONHECIMENTO_NV5;
-  nivel_conhecimento_microcontrolador?: CONHECIMENTO_NV5;
-
-  facil_compreender?: boolean;
-  opcoes_apresentadas_sao_claras?: boolean;
-  facil_configurar_ambiente?: CONCORDANCIA_NV5;
-  navegacao_intuitiva?: CONCORDANCIA_NV5;
-
-  ia_compreendeu_requisitos?: boolean;
-  ia_gerou_resposta_coerente?: boolean;
-  audio_foi_usado?: boolean;
-
-  codigo_atendeu_necessidades?: boolean;
-  codigo_facil_compreencao?: boolean;
-  codigo_muitas_alteracoes_manuais?: boolean;
-
-  compilacao_projeto_util?: boolean;
-  gravacao_no_microcontrolador_util?: boolean;
-
-  ajudou_entender_desenvolvimento_mic?: boolean;
-  reduziu_dificuldade_tecnica_no_desenvolvimento?: boolean;
-  auxiliou_na_aprendizagem?: boolean;
-
-  esta_satisfeita_com_aplicacao?: boolean;
-  utilizaria_projeto_futuro?: boolean;
-  recomendaria_para_pessoas?: boolean;
-
-  nota_atribuida_aplicacao?: number;
-
-  o_que_melhoraria?: string;
-  funcionalidades_futuras?: string;
-}
-
-const Formulario: FC = () => {
-  const { handleSubmit, setValue, register, formState: {errors} } = useForm<
+const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
+  const { handleSubmit, setValue, register, formState: {errors, isSubmitted} } = useForm<
     Avaliacao_v1_ccamic_FormInput,
     any,
     Avaliacao_v1_ccamic_FormOutput
@@ -94,52 +58,6 @@ const Formulario: FC = () => {
       console.log(data);
     }
   };
-  // async function handleSubmit(e: React.FormEvent) {
-  //   e.preventDefault();
-  //   if (!gabarito) {
-  //     alert("Preencha o formulário antes de enviar");
-  //     return;
-  //   }
-    
-  //   // let contador = 0;
-  //   // for (let i of lista){
-  //   //   try{
-  //   //     if (i === undefined || i === null) {
-  //   //       alert('Erro ao Mandar solicitação. faltou responder um campo')
-  //   //       console.error(contador)
-  //   //       return;
-  //   //     }
-  //   //     if (typeof i === "string" && i.length <= 0){
-  //   //       alert('Erro ao Mandar solicitação. faltou responder um campo')
-  //   //       console.error(contador)
-  //   //       return;
-  //   //     }
-  //   //     if (typeof i == "number" && i >= 0 && i <= 10){
-  //   //       alert('O valor deve estar entre 0 e 10.')
-  //   //       return;
-  //   //     }
-  //   //   }
-  //   //   catch (e){
-  //   //     alert('Problema inesperado nas checagens dos campos')
-  //   //     return;
-  //   //   }
-  //   //   contador ++;
-  //   // }
-
-    // console.log(gabarito)
-    // const { data, error } = await supabase
-    //   .from("cca_mic_satisfacao") 
-    //   .insert([gabarito]); 
-
-    // if (error) {
-    //   console.error(error);
-    //   alert("Erro ao salvar");
-    // } else {
-    //   console.log(gabarito);
-    //   alert("Dados salvos com sucesso!");
-    //   console.log(data);
-    // }
-  // }
 
   return (
     <form className="formularios" onSubmit={handleSubmit(onSubmit)}>
@@ -156,7 +74,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.area_atuacao}
+        error={!!errors.area_atuacao && isSubmitted}
         helpertext={errors.area_atuacao?.message}
       />
       <Questao
@@ -172,7 +90,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.nivel_conhecimento_programacao}
+        error={!!errors.nivel_conhecimento_programacao && isSubmitted}
         helpertext={errors.nivel_conhecimento_programacao?.message}
       />
       <Questao 
@@ -188,7 +106,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.nivel_conhecimento_microcontrolador}
+        error={!!errors.nivel_conhecimento_microcontrolador && isSubmitted}
         helpertext={errors.nivel_conhecimento_microcontrolador?.message}
       />
       <Questao 
@@ -204,7 +122,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.facil_compreender}
+        error={!!errors.facil_compreender && isSubmitted}
         helpertext={errors.facil_compreender?.message}
       />
       <Questao
@@ -220,7 +138,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.opcoes_apresentadas_sao_claras}
+        error={!!errors.opcoes_apresentadas_sao_claras && isSubmitted}
         helpertext={errors.opcoes_apresentadas_sao_claras?.message}
       />
 
@@ -237,7 +155,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.facil_configurar_ambiente}
+        error={!!errors.facil_configurar_ambiente && isSubmitted}
         helpertext={errors.facil_configurar_ambiente?.message}
       />
 
@@ -254,7 +172,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.navegacao_intuitiva}
+        error={!!errors.navegacao_intuitiva && isSubmitted}
         helpertext={errors.navegacao_intuitiva?.message}
       />
 
@@ -271,7 +189,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.ia_compreendeu_requisitos}
+        error={!!errors.ia_compreendeu_requisitos && isSubmitted}
         helpertext={errors.ia_compreendeu_requisitos?.message}
       />
 
@@ -288,7 +206,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.ia_gerou_resposta_coerente}
+        error={!!errors.ia_gerou_resposta_coerente && isSubmitted}
         helpertext={errors.ia_gerou_resposta_coerente?.message}
       />
 
@@ -305,7 +223,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.audio_foi_usado}
+        error={!!errors.audio_foi_usado && isSubmitted}
         helpertext={errors.audio_foi_usado?.message}
       />
 
@@ -322,7 +240,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.codigo_atendeu_necessidades}
+        error={!!errors.codigo_atendeu_necessidades && isSubmitted}
         helpertext={errors.codigo_atendeu_necessidades?.message}
       />
 
@@ -339,7 +257,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.codigo_facil_compreencao}
+        error={!!errors.codigo_facil_compreencao && isSubmitted}
         helpertext={errors.codigo_facil_compreencao?.message}
       />
 
@@ -356,7 +274,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.codigo_muitas_alteracoes_manuais}
+        error={!!errors.codigo_muitas_alteracoes_manuais && isSubmitted}
         helpertext={errors.codigo_muitas_alteracoes_manuais?.message}
       />
 
@@ -373,7 +291,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.compilacao_projeto_util}
+        error={!!errors.compilacao_projeto_util && isSubmitted}
         helpertext={errors.compilacao_projeto_util?.message}
       />
 
@@ -390,7 +308,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.gravacao_no_microcontrolador_util}
+        error={!!errors.gravacao_no_microcontrolador_util && isSubmitted}
         helpertext={errors.gravacao_no_microcontrolador_util?.message}
       />
 
@@ -407,7 +325,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.ajudou_entender_desenvolvimento_mic}
+        error={!!errors.ajudou_entender_desenvolvimento_mic && isSubmitted}
         helpertext={errors.ajudou_entender_desenvolvimento_mic?.message}
       />
 
@@ -424,7 +342,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.reduziu_dificuldade_tecnica_no_desenvolvimento}
+        error={!!errors.reduziu_dificuldade_tecnica_no_desenvolvimento && isSubmitted}
         helpertext={errors.reduziu_dificuldade_tecnica_no_desenvolvimento?.message}
       />
 
@@ -441,7 +359,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.auxiliou_na_aprendizagem}
+        error={!!errors.auxiliou_na_aprendizagem && isSubmitted}
         helpertext={errors.auxiliou_na_aprendizagem?.message}
       />
 
@@ -458,7 +376,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.esta_satisfeita_com_aplicacao}
+        error={!!errors.esta_satisfeita_com_aplicacao && isSubmitted}
         helpertext={errors.esta_satisfeita_com_aplicacao?.message}
       />
 
@@ -475,7 +393,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.utilizaria_projeto_futuro}
+        error={!!errors.utilizaria_projeto_futuro && isSubmitted}
         helpertext={errors.utilizaria_projeto_futuro?.message}
       />
 
@@ -492,7 +410,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.recomendaria_para_pessoas}
+        error={!!errors.recomendaria_para_pessoas && isSubmitted}
         helpertext={errors.recomendaria_para_pessoas?.message}
       />
 
@@ -509,7 +427,7 @@ const Formulario: FC = () => {
               shouldTouch: true,
           })
         }}
-        error={!!errors.nota_atribuida_aplicacao}
+        error={!!errors.nota_atribuida_aplicacao && isSubmitted}
         helpertext={errors.nota_atribuida_aplicacao?.message}
       />
 
@@ -525,7 +443,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.o_que_melhoraria}
+        error={!!errors.o_que_melhoraria && isSubmitted}
         helpertext={errors.o_que_melhoraria?.message}
       />
 
@@ -541,7 +459,7 @@ const Formulario: FC = () => {
             shouldTouch: true,
           })
         }}
-        error={!!errors.funcionalidades_futuras}
+        error={!!errors.funcionalidades_futuras && isSubmitted}
         helpertext={errors.funcionalidades_futuras?.message}
       />
       
@@ -550,4 +468,5 @@ const Formulario: FC = () => {
   );
 }
 
-export default  Formulario
+export default Formulario_Satisfacao_CCA_MIC_V0_1
+// Formulario_Satisfacao_CCA_MIC_V0_1
