@@ -1,15 +1,13 @@
 import { Box, Divider, Typography } from "@mui/material"
 import MyBody from "../components/MyBody"
 import MyContainer from "../components/MyContainer"
-import MyMenu from "../components/MyMenu"
 import type { FC } from "react"
 import MyCard from "../components/MyCard"
 
 const Pagina_Inicio: FC = () => {
 
   return (
-    <MyBody>
-      <MyMenu />
+    <MyBody adicionaMenu={true}>
       <MyContainer maxWidth={"md"}>
         <Box sx={{
           paddingTop: '30px',

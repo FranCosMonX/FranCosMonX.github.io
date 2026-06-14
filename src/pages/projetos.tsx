@@ -1,14 +1,12 @@
 import type { FC } from "react"
 import MyBody from "../components/MyBody";
-import MyMenu from "../components/MyMenu";
 import MyContainer from "../components/MyContainer";
 import { Divider, Typography } from "@mui/material";
 import MyCard from "../components/MyCard";
 
 const Projetos : FC = () => {
   return (
-    <MyBody>
-      <MyMenu />
+    <MyBody adicionaMenu={true}>
       <MyContainer maxWidth={"md"} sx={{
         paddingTop: '30px',
         width: '100%',

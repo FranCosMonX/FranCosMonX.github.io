@@ -1,11 +1,13 @@
 import { Container } from "@mui/material";
 import type { FC, ReactNode } from "react";
+import MyMenu from "./MyMenu";
 
 interface MyBodyParams {
   children?: ReactNode;
+  adicionaMenu: boolean;
 }
 
-const MyBody: FC <MyBodyParams> = ({ children }) => {
+const MyBody: FC <MyBodyParams> = ({ children, adicionaMenu }) => {
   return (
     <Container disableGutters maxWidth={'xl'} sx={{
       minWidth: '100%',
@@ -26,6 +28,7 @@ const MyBody: FC <MyBodyParams> = ({ children }) => {
       position: 'relative',
       backgroundColor: 'var(--bg)'
     }}>
+      {adicionaMenu && <MyMenu />}
       {children}
     </Container>
   )

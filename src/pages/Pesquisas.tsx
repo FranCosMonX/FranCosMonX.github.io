@@ -1,14 +1,12 @@
-import { Divider, Typography } from "@mui/material"
-import MyBody from "../components/MyBody"
-import MyContainer from "../components/MyContainer"
-import MyMenu from "../components/MyMenu"
-import type { FC } from "react"
-import MyCard from "../components/MyCard"
+import { Divider, Typography } from "@mui/material";
+import MyBody from "../components/MyBody";
+import MyContainer from "../components/MyContainer";
+import type { FC } from "react";
+import MyCard from "../components/MyCard";
 
 const Pesquisas_Pagina: FC = () => {
   return (
-    <MyBody>
-      <MyMenu />
+    <MyBody adicionaMenu={true}>
       <MyContainer maxWidth={"md"} sx={{
         paddingTop: '30px',
         width: '100%',
