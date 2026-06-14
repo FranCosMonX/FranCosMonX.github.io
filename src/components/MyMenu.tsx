@@ -17,7 +17,7 @@ const MyMenu:FC = () => {
         </MenuItem>
       }
       <MenuItem sx={{':hover': {backgroundColor: 'var(--accent-bg)'}}}>
-        <ListItemText title="Projetos">Projetos</ListItemText>
+        <ListItemText title="Projetos" onClick={() => navigate('/projetos')} >Projetos</ListItemText>
       </MenuItem>
       <MenuItem sx={{':hover': {backgroundColor: 'var(--accent-bg)'}}}>
         <ListItemText title="Pesquisas" onClick={(() => navigate('/pesquisas'))} >Pesquisas</ListItemText>

@@ -64,7 +64,7 @@ const MyCard : FC<MyCard> = ({titulo, conteudo, data_modificacao, autor,sites}) 
             })}
         </Typography>
         }
-        <Typography variant="body2" align="right">{data_modificacao}</Typography>
+        <Typography variant="body2" align="right" sx={{paddingTop: '5px'}}>{data_modificacao}</Typography>
       </CardContent>
     </Card>
   )
