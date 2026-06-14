@@ -5,6 +5,7 @@ import Formulario_Satisfacao_CCA_MIC_V0_1 from './pages/formularios/pesquisas/cc
 import Formulario from './components/questionario/Formulario';
 import Projetos from './pages/Projetos';
 import './App.css';
+import Tutorial_CCA_MIC from './pages/tutoriais/projetos/cca_mic';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Pagina_Inicio />} />
         <Route path="/pesquisas" element={<Pesquisas_Pagina />} />
         <Route path='/projetos' element={<Projetos />}/>
+        <Route path='/projetos/cca_mic' element={<Tutorial_CCA_MIC />}/>
         <Route path='/pesquisas/satisfacaoo_cca_mic_1' element={<Formulario><Formulario_Satisfacao_CCA_MIC_V0_1 /></Formulario>} />
       </Routes>
     </div>

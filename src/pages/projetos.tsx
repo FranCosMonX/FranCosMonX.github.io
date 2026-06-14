@@ -19,6 +19,9 @@ const Projetos : FC = () => {
           conteudo="Uma aplicação inspirada em chatbot para o desenvolvimento facilitado de sistemas para microcontroladores. O sistema contém duas aplicações com o objetivo de tornar o backend independente do frontend permitindo criação de interfaces para smartphone e outros aparelhos."
           data_modificacao="14/06/2026 ás 00:03"
           autor="Autor do site"
+          sites={[
+            {href: '/projetos/cca_mic', href_externo: false, nome: 'Tutorial'}
+          ]}
         />
       </MyContainer>
     </MyBody>
