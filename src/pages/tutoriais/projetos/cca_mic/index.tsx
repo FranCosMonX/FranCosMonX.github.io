@@ -226,6 +226,22 @@ pnpm run dev
 Ao executar o último comando, será disponibilizado a URL em que o Frontend estará disponível, como \`http://localhost:5173/\` visto na imagem logo abaixo.
 
 ![Resultado após utilizar o comando pnpm run dev, mostrando a URL em que a aplicação está disponível](screenshots/resultado_exe_frontend_ok.png "Resultado após utilizar o comando pnpm run dev, mostrando a URL em que a aplicação está disponível")
+
+## Utilizando o sistema
+
+A execução do Sistema só funcionará se ambas as aplicações tiverem sido configuradas corretamente. Vale lembrar que o backend deve ser executado primeiro para gerar a URL de acesso que será incluso no arquivo *.env* do frontend. É por meio dessa URL que as aplicações iram interagir. O \`vite\`, por padrão, executará a aplicação na porta local 5173, definido previamente no backend. Ou seja, se o frontend não estiver executando nessa porta, o acesso às resposta da API será bloqueado devido ás politicas de CORS.
+
+![Código que define quem pode receber as respostas da API](screenshots/cca_mic_com_front_definido_no_back.png "Código que define quem pode receber as respostas da API")
+
+Caso o frontend não esteja sendo executado nesta porta, no terminal aperte **CTRL + C** para interromper a execução e use o comando \`pnpm run dev --port 5173\`. Se mesmo assim não funcionar ou der errado, deve haver outra aplicação usando essa mesma porta no computador. Neste caso, interrompa esta outra aplicação ou altere a porta no arquivo \`app.py\` contido na pasta raiz do diretório do backend.
+
+### Problemas iniciais possíveis
+
+Caso o backend não esteja iniciado ou sua URL não informada no arquivo *.env*, localizado no diretório do frontend, o erro, como visto na imagem a seguir, pode surgir. Ou, principalmente se a URL no arquivo *.env* estiver errada, acontecimentoo inesperado pode surgir como uma mensagem informando que tens dados já salvo e posteriormente, independente da escolhe de manter os dados, irá aparecer uma mensagem do sistema sem conteúdo, apenas com um botão de OK (neste cenário, verifique o arquivo .env lembrando que após a URL deverá ter \`/api\`).
+
+![Mnesagem de erro - backend desconectado ou com problema](screenshots/problemas/error_backend_com_problema_cca_mic_ou_interrompido.png "Mnesagem de erro - backend desconectado ou com problema")
+
+Caso a mensagem continue aparecendo mesmo com o backend sendo executado e informado no arquivo *.env*, clique com o botão direito do mouse no site e selecione "inspecionar". No lado direito da aba "elementos", da interface que apareceu quando selecionaste inspecionar, aperte em "Console." Se houver o erro de politica de CORS, é porque o frontend está sendo executado em uma porta diferente da porta 5173. Dessa forma, refaça o último passo informado na configuração do frontend.
           `} />
         </MyTextoCorrido>
       </MyContainer>
