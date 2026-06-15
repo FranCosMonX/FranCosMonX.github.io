@@ -44,6 +44,36 @@ Já o frontend foi desenvolvido utilizando:
 - **Zod + HookForm:** para validação simples dos campos do formulário.
 - **MaterialUI Components:** facilitando a construção do frontend sem muita complexidade.
 
+### Segurança e Limitações
+
+Por se tratar de um protótipo acadêmico, o sistema ainda não implementa mecanismos robustos de segurança para ambientes de produção.
+
+Atualmente o sistema possuui algumas limitaçõeos:
+
+- Não há proteção avançada contra acessos indevidos;
+- Não existem mecanismos completos de autenticação;
+- O sistema não foi projetado para exposição pública na internet;
+- O uso remoto deve ser realizado com cautela;
+- Necessidade do Windows ter o winget, para instalar o arduino-cli automaticamente;
+- Suporte há apenas alguns modelos de microcontroladores;
+- Suporte há apenas alguns modelos da IA do Google e OpenAI;
+- Edição manual dos arquivos de texto, quando for preciso interarir com os arquivos do projeto em desenvolvimento;
+- Perda do projeto com o mesmo nome criado anteriormente a geração do novo código.
+
+Portanto, recomenda-se utilizar o sistema apenas em ambientes controlados para fins acadêmicos, testes e desenvolvimento.
+
+### Funcionalidades
+
+O sistema tem como objetivo abstrair operações complexas para usuários que não possuem domínio técnico avançado sobre desenvolvimento de Sistemas Embarcados. Entre suas principais responsabilidades, destacam-se:
+
+1. Intermediar a comunicação entre o usuário e a Inteligência Artificial, embora não impeça o envio de informações pessoais por meio de linguagem natural;
+
+2. Preparar automaticamente o ambiente de desenvolvimento necessário para a aplicação discutida entre o usuário e a IA;
+
+3. Gerar arquivos de código-fonte e arquivos de configuração necessários para compilação e execução do projeto;
+
+4. Realizar a gravação do código no microcontrolador, desde que não existam erros de compilação, utilizando conexão USB por meio de comunicação serial.
+
 ## Configurando Ambientes de Execução
 
 ----
