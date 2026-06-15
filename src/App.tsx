@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Pagina_Inicio />} />
         <Route path="/pesquisas" element={<Pesquisas_Pagina />} />
         <Route path='/projetos' element={<Projetos />}/>
-        <Route path='/projetos/cca_mic' element={<Tutorial_CCA_MIC />}/>
+        <Route path='/projetos/tutorial_cca_mic' element={<Tutorial_CCA_MIC />}/>
         <Route path='/pesquisas/satisfacaoo_cca_mic_1' element={<Formulario><Formulario_Satisfacao_CCA_MIC_V0_1 /></Formulario>} />
       </Routes>
     </div>

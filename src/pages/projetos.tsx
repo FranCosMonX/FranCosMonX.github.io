@@ -20,7 +20,7 @@ const Projetos : FC = () => {
           data_modificacao="14/06/2026 ás 00:03"
           autor="Autor do site"
           sites={[
-            {href: '/projetos/cca_mic', href_externo: false, nome: 'Tutorial'}
+            {href: '/projetos/tutorial_cca_mic', href_externo: false, nome: 'Tutorial'}
           ]}
         />
       </MyContainer>
