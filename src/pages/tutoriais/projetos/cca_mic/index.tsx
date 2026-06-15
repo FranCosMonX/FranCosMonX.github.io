@@ -222,6 +222,10 @@ pnpm run dev
 \`\`\`
 
 > Execução da aplicação em modo desenvolvedor, usado pelo fato da aplicação estar rodando localmente devido a segurança de dados e de privacidade.
+
+Ao executar o último comando, será disponibilizado a URL em que o Frontend estará disponível, como \`http://localhost:5173/\` visto na imagem logo abaixo.
+
+![Resultado após utilizar o comando pnpm run dev, mostrando a URL em que a aplicação está disponível](screenshots/resultado_exe_frontend_ok.png "Resultado após utilizar o comando pnpm run dev, mostrando a URL em que a aplicação está disponível")
           `} />
         </MyTextoCorrido>
       </MyContainer>
