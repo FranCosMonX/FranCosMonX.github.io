@@ -1,6 +1,5 @@
 import type { FC, ReactNode } from "react"
 import MyBody from "../../components/MyBody"
-import MyMenu from "../../components/MyMenu"
 import MyContainer from "../../components/MyContainer"
 import { Divider, Typography } from "@mui/material"
 
@@ -10,8 +9,7 @@ interface FormularioParams {
 
 const Formulario: FC <FormularioParams> = ({children}) => {
   return (
-    <MyBody>
-      <MyMenu />
+    <MyBody adicionaMenu={true}>
       <MyContainer maxWidth={"md"} sx={{
         paddingTop: '30px',
         width: '100%',
