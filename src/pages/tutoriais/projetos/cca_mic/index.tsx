@@ -32,14 +32,14 @@ O sistema foi desenvolvido usando a IDE VSCode aliado a extensões do python, gi
 
 - **Ambiente Virtual:** evitando que as bibliotecas sejam instaladas globalmente.
 - **Flask + python:** simplificando o desenvolvimento do backend.
-- **WinGet:** Instalador de aplicativos do Windows a partir de certa compilação do windows 10 e integrado ao windows 11.
+- **WinGet:** Instalador de aplicativos do Windows suportado na versão 1809 (build 17763) ou superior do Windows 10 e integrado ao windows 11. Para mais detalhes, visite o site oficial da microsoft sobre o assunto: [learn.microsoft.com/pt-br](https://learn.microsoft.com/pt-br/windows/package-manager/winget/).
   > Caso não tenha, todos as ferramentas deveram ser instaladas manualmente pelo usuário.
 - **Bibliotecas de IA:** bibliotecas necessárias para conectar a aplicação às IAs da OpenAI e do Google.
 - **SQLite:** para armazenar os dados localmente na máquina do usuário.
 
 Já o frontend foi desenvolvido utilizando:
 
-- **React com typescript:** projeto criado a partir do **PNPM** do **Node.js** com uma versão igual ou superior a 18.
+- **React com typescript:** projeto criado a partir do **PNPM v10.17** do **Node.js v22**.
 - **AssemblyAI:** API de transcrição de áudio.
 - **Zod + HookForm:** para validação simples dos campos do formulário.
 - **MaterialUI Components:** facilitando a construção do frontend sem muita complexidade.
@@ -48,7 +48,7 @@ Já o frontend foi desenvolvido utilizando:
 
 Por se tratar de um protótipo acadêmico, o sistema ainda não implementa mecanismos robustos de segurança para ambientes de produção.
 
-Atualmente o sistema possuui algumas limitaçõeos:
+Atualmente o sistema possui algumas limitações:
 
 - Não há proteção avançada contra acessos indevidos;
 - Não existem mecanismos completos de autenticação;
@@ -57,8 +57,8 @@ Atualmente o sistema possuui algumas limitaçõeos:
 - Necessidade do Windows ter o winget, para instalar o arduino-cli automaticamente;
 - Suporte há apenas alguns modelos de microcontroladores;
 - Suporte há apenas alguns modelos da IA do Google e OpenAI;
-- Edição manual dos arquivos de texto, quando for preciso interarir com os arquivos do projeto em desenvolvimento;
-- Perda do projeto com o mesmo nome criado anteriormente a geração do novo código.
+- Edição manual dos arquivos de texto, quando for preciso interagir com os arquivos do projeto em desenvolvimento;
+- Perda do projeto com o mesmo nome criado anteriormente á geração do novo código.
 
 Portanto, recomenda-se utilizar o sistema apenas em ambientes controlados para fins acadêmicos, testes e desenvolvimento.
 
@@ -80,8 +80,8 @@ O sistema tem como objetivo abstrair operações complexas para usuários que n�
 
 Antes de iniciar a instalação das ferramentas utilizadas para executar a aplicação, verifique se o seu computador obedece os requisitos minimos:
 
-- Sistema Opeeracional (SO): Windows 10/11
-- Tem suporte á Winget: prima WIN + R e digite "cmd". Aoo aparecer uma janela preta, escreva "winget". Se aparecer a versão, além de comoandos possíveis, o SO terá suporte. 
+- Sistema Opeeracional (S.O.): Windows 10 versão 1809 (build 17763) ou superior / Windows 11
+- Tem suporte á Winget: prima WIN + R e digite "cmd". Ao aparecer uma janela preta, escreva "winget". Se aparecer a versão, além de comandos possíveis, o S.O. terá suporte e estaará configurado. Caso o S.O. seja o Windows 10 com a versão 1809 ou superior e não possua o winget, acesse [learn.microsoft.com/pt-br](https://learn.microsoft.com/pt-br/windows/package-manager/winget/) para saber como ativá-lo.
 
 ![Janela Executar do Windows ao apertar o WIN + R](screenshots/win_sum_r_com_cmd.png "Janela Executar do Windows ao apertar o WIN + R")
 
@@ -91,7 +91,7 @@ Antes de mostrar o passo a passo de configurar o sistema para uso, é necessári
 
 - Python: versão 3.13 ou superior;
 - Node.js: versão 22 ou superior;
-- PNPM: versão 11 ou superior;
+- PNPM: versão 10.17 ou superior;
 - Git: opcional para evitar complexidades;
 
 A instalação pode ser feita de várias formas, mas só será mostrada 2 formas para o Windows 10/11.
