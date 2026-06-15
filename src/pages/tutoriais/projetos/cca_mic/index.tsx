@@ -70,9 +70,9 @@ Antes de iniciar, é importante relembrar que o Windows deve ter suporte ao Wing
 
 Primeiro, prima **WIN + R**, digite **cmd** e prima Enter. Isso fará uma editor preto ou colorido (de acordo com o tema do computador) aparecer. Para averiguar se o SO tem suporte ao winget, basta escrever \`winget\` e apertar Enter. O resultado deverá ser iguual ou semelhante ao visto na imagem a seguir.
 
-![Janela Executar do Windows ao apertar o WIN + R](src/assets/screenshots/win_sum_r_com_cmd.png "Janela Executar do Windows ao apertar o WIN + R")
+![Janela Executar do Windows ao apertar o WIN + R](screenshots/win_sum_r_com_cmd.png "Janela Executar do Windows ao apertar o WIN + R")
 
-![Exemplo do resultado do comando winget](src/assets/screenshots/winget_exemplo.png "Resuultado do uso do comando winget no terminal")
+![Exemplo do resultado do comando winget](screenshots/winget_exemplo.png "Resuultado do uso do comando winget no terminal")
 
 Com o SO tendo o recurso Winget, para instalar os recursos, seguindo a lista, basta usar os comandos a seguir:
 - \`winget install "Python.Python.3.13"\`: para instalar o python na versão 3.13.14;

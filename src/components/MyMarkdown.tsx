@@ -25,6 +25,10 @@ const MyMarkdownWrapper = styled("div")(({ theme }) => ({
     overflowX: "auto",
   },
 
+  '& h1, & h2, & h3, & h4':{
+    lineHeight: 'var(--line-height)'
+  },
+
   "& h1": {
     fontSize: '52px',
   },

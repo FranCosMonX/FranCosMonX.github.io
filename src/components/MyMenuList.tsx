@@ -8,7 +8,7 @@ interface MyMenuParams {
 
 const MyMenuList: FC<MyMenuParams> = ({children, sx}) => {
   return (
-    <MenuList sx={{display: 'flex', flexDirection: 'column', gap: '15px', height: '100%', sx }}>
+    <MenuList sx={{display: 'flex', textAlign: 'center', flexDirection: 'column', gap: '15px', height: '100%', sx }}>
       {children}
     </MenuList>
   )
