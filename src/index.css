@@ -3,7 +3,8 @@
   --text-h: #1a1a1a;        
   --bg: #f5f5f5;               
   --border: #dcdcdc;         
-  --code-bg: #6563635f;
+  --code-bg: #4d4d4d36;
+  --code-text: #1e1e1e;
   --error-bg: rgba(255, 81, 0, 0.325);          
   --accent: #2b46cd90;            
   --accent-bg: rgba(12, 27, 195, 0.119);
@@ -40,7 +41,8 @@
     --text-h: #ffffff;         
     --bg: #121212;              
     --border: #2a2a2a;        
-    --code-bg: #1e1e1e;          
+    --code-bg: #1e1e1e;
+    --code-text: #cecece9f;
     --accent: #90caf942;         
     --accent-bg: rgba(144, 202, 249, 0.1);
     --accent-border: rgba(144, 202, 249, 0.5);
@@ -113,5 +115,6 @@ code {
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;
-  background: var(--code-bg);
+  color: var(--code-text);
+  background-color: var(--code-bg);
 }
