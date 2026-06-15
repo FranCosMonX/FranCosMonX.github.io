@@ -368,4 +368,48 @@ flask run
 Feito isso, o resultado do terminal deve ser semelhante ao visto na imagem logo a seguir. É importante destacar que a URL em que o servidor está rodando **deverá ser guardada para configurar o frontend** (que no exemplo é \`http://127.0.0.1:5000\` ja que está rodando apenas no computador e **não** sendo disponibilizado pela internet). Além disso, o terminal não deverá ser fechado durante o uso da aplicação (deverá ser aberto outro posteriormente para a configuração do frontend).
 
 ![Resultado bem sucedido da configuração e execução do backend](screenshots/resultado_exe_backend_ok.png "Exemplo de execução da aplicação backend após ser configurada")
+
+### Configurando o frontend
+
+Com o Nodejs v22 e PNPM instalados, entre na pasta baixada nomeada de *"TCC-CCA-MIC-ftend"*, aperte o botão direito do mouse em algum local vazio da pasta (não funciona se for em cima de um arquivo) e selecione a opção **Abrir no Terminal** ou opção semelhante.
+
+Antes de colocar os comandos, primeiro copie o arquivo da pasta chamado \`.env-example\` e cole ele no mesmo local, mas renomeando-o para \`.env\`, assim como visto na imagem.
+
+![Arquivo .env-example copiado para o arquivo .env estando no mesmo diretório](screenshots/exemplo_localizacao_novo_env_no_cca_mic.png "exemplo de arquivo duplicado, mas renomeado posteriormente")
+
+Logo a seguir, abra o arquivo *.env* com editor de texto (podendo ser o bloco de notas do windows). Dentro do arquivo terá algumas variáveis de ambiente usadas ao longo da aplicação.
+
+\`\`\`
+VITE_API_URL=http://{ip}:{porta}/api
+VITE_KEY_ASSEMBLY_AI=API_KEY
+\`\`\`
+
+É dentro deste arquivo, após **VITE_API_URL=** e antes do **/api**, que deverá estar a **URL do servidor backend** ainda em execução em outro terminal. O conteúdo, após a modificação, deverá se assemelhar ao conteúdo a seguir.
+
+\`\`\`
+VITE_API_URL=http://127.0.0.1:5000/api
+VITE_KEY_ASSEMBLY_AI=API_KEY
+\`\`\`
+
+Com o arquivo alterado, salve as modificações e feche o arquivo.
+
+> Caso use o recurso de áudio, visite o site [assemblyai.com](https://www.assemblyai.com/), se cadastre e coloque a API Key após **VITE_KEY_ASSEMBLY_AI=**, substituindo "API_KEY".
+
+No terminal anteriormente aberto, execute os comandos logo a seguir.
+
+\`\`\`terminal
+pnpm install
+\`\`\`
+
+> Utilizado para baixar todos os pacotes usados (bibliotecas).
+
+Caso apareça um aviso sobre "ignored build scripts", como visto na imagem a seguir, utilize o comando indicado no próprio terminal \`pnpm approve-builds\`, aperte **espaço** para selecionnar o campo, aperte **Enter** para confirmar e **y** para aceitar e continuar. Sem essa opção, a aplicação do frontend poderá não ser iniciada por causa do erro \`ERR_PNPM_IGNORED_BUILDS\`.
+
+![Visualização da mensagem de warning](screenshots/warningn_cca_mic_front_pnpmAprove.png "Visualização da mensagem de warning")
+
+\`\`\`terminal
+pnpm run dev
+\`\`\`
+
+> Execução da aplicação em modo desenvolvedor, usado pelo fato da aplicação estar rodando localmente devido a segurança de dados e de privacidade.
           `})})})});function hR(){return(0,F.jsx)(`div`,{children:(0,F.jsxs)(It,{children:[(0,F.jsx)(Pt,{path:`/`,element:(0,F.jsx)(A_,{})}),(0,F.jsx)(Pt,{path:`/pesquisas`,element:(0,F.jsx)(j_,{})}),(0,F.jsx)(Pt,{path:`/projetos`,element:(0,F.jsx)(Ej,{})}),(0,F.jsx)(Pt,{path:`/projetos/cca_mic`,element:(0,F.jsx)(mR,{})}),(0,F.jsx)(Pt,{path:`/pesquisas/satisfacaoo_cca_mic_1`,element:(0,F.jsx)(Tj,{children:(0,F.jsx)(wj,{})})})]})})}(0,y.createRoot)(document.getElementById(`root`)).render((0,F.jsx)(v.StrictMode,{children:(0,F.jsx)(wn,{children:(0,F.jsx)(hR,{})})}));
