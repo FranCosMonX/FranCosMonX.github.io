@@ -273,6 +273,8 @@ Antes de iniciar a instalação das ferramentas utilizadas para executar a aplic
 - Sistema Opeeracional (SO): Windows 10/11
 - Tem suporte á Winget: prima WIN + R e digite "cmd". Aoo aparecer uma janela preta, escreva "winget". Se aparecer a versão, além de comoandos possíveis, o SO terá suporte. 
 
+![Janela Executar do Windows ao apertar o WIN + R](screenshots/win_sum_r_com_cmd.png "Janela Executar do Windows ao apertar o WIN + R")
+
 ### Instalação rápida de todos os recursos
 
 Antes de mostrar o passo a passo de configurar o sistema para uso, é necessário a instalação dos recursos principal para sua execução. São eles:
@@ -290,11 +292,9 @@ Antes de iniciar, é importante relembrar que o Windows deve ter suporte ao Wing
 
 Primeiro, prima **WIN + R**, digite **cmd** e prima Enter. Isso fará uma editor preto ou colorido (de acordo com o tema do computador) aparecer. Para averiguar se o SO tem suporte ao winget, basta escrever \`winget\` e apertar Enter. O resultado deverá ser iguual ou semelhante ao visto na imagem a seguir.
 
-![Janela Executar do Windows ao apertar o WIN + R](screenshots/win_sum_r_com_cmd.png "Janela Executar do Windows ao apertar o WIN + R")
-
 ![Exemplo do resultado do comando winget](screenshots/winget_exemplo.png "Resuultado do uso do comando winget no terminal")
 
-Com o SO tendo o recurso Winget, para instalar os recursos, seguindo a lista, basta usar os comandos a seguir:
+Com o S.O. tendo o recurso Winget, para instalar os recursos, seguindo a lista, basta usar os comandos a seguir:
 - \`winget install "Python.Python.3.13"\`: para instalar o python na versão 3.13.14;
 - \`winget install "OpenJS.NodeJS.22"\`: para instalar o node.js na versão 22.22.3. Este não instala o gerenciador de pacote alternativo ao NPM, chamado PNPM, o que nos leva ao próximoo item;
 - \`npm install -g pnpm\`: irá instalar a versão suficiente para rodar a aplicação;
@@ -314,8 +314,58 @@ Caso o pnpm não tenha sido instalado junto com o node, ainda no terminal, utili
 
 Para instalar o Git, basta acessar o site [git-scm.com](https://git-scm.com/install/windows) e apertar no hiperlink contendo "Git for Windows" a depender da máquina (normalmente "Git for Windows/x64 Setup"). Ao baixar, faça o mesmo procedimento realizado na instalação do nodejs. No terminal, ao concluir a instalação, basta usar o comando \`git --version\`.
 
-### Configurando o Backend
+### Baixando os arquivos do sistema
 
-O **python** é usado como a principal linguagem de programação no backend. Ele, por sua vez, suporta versões do python a partir da versão 3.13, embora tenha sido desenvolvida na versão 3.14.
+Antes de iniciar, crie uma pasta, para armazenar os arquivos do sistema, em documentos ou outro diretório que não tenha permissão de administrador (diretório raiz). Após isto, abra a pasta, aperte o botão direito do mouse em uma área vazia da pasta e selecione a opção "abrir no terminal" no Windows 11 (uma opção semelhante no windows 10).
 
+![Opções visiveis após apertar o botão direito do mouse em uma área vazia da pasta](screenshots/opcao_abrir_terminal_estando_pasta.png "Exemplo do clicar do botão direito do mouse em uma área vazia")
+
+Quando o editor preto/colorido aparecer use os dois comandos a seguir, para baixar os arquivos sem muita complexidade.
+\`\`\` terminal
+git clone https://github.com/FranCosMonX/TCC-CCA-MIC-BKend.git
+\`\`\`
+
+> Para baixar os arquivos do backend já descompactado.
+
+\`\`\`terminal
+git clone https://github.com/FranCosMonX/TCC-CCA-MIC-ftend.git
+\`\`\`
+
+> Para baixar os arquivos do frontend já descompactado.
+
+Quando o download das 2 aplicações tiverem terminado, oo terminal pode ser fechado.
+
+### Configurando o backend
+
+Navegue até a pasta baixada chamada *"TCC-CCA-MIC-BKend"*, aperte o botão direito do mouse em algum local vazio da pasta (não funciona se for em cima de um arquivo) e selecione a opção **Abrir no Terminal** ou opção semelhante.
+
+Com o terminal aberto e com o python instalado, utilize os comandos a seguir:
+
+\`\`\`terminal
+python -m venv venv
+\`\`\`
+
+> Responsável por criar um ambiente virtual dentro da própria pasta (pasta venv) para impedir que instalações de pacotes sejam instalados na versão global.
+
+\`\`\`terminal
+.\\venv\\Scripts\\activate
+\`\`\`
+
+> Ativando o ambiente virtual criado anteriormente.
+
+\`\`\`terminal
+pip install -r requirements.txt
+\`\`\`
+
+> Instalando todos os pacotes usados na aplicação (bibliotecas).
+
+\`\`\`terminal
+flask run
+\`\`\`
+
+> Rodando a aplicação backend.
+
+Feito isso, o resultado do terminal deve ser semelhante ao visto na imagem logo a seguir. É importante destacar que a URL em que o servidor está rodando **deverá ser guardada para configurar o frontend** (que no exemplo é \`http://127.0.0.1:5000\` ja que está rodando apenas no computador e **não** sendo disponibilizado pela internet). Além disso, o terminal não deverá ser fechado durante o uso da aplicação (deverá ser aberto outro posteriormente para a configuração do frontend).
+
+![Resultado bem sucedido da configuração e execução do backend](screenshots/resultado_exe_backend_ok.png "Exemplo de execução da aplicação backend após ser configurada")
           `})})})});function hR(){return(0,F.jsx)(`div`,{children:(0,F.jsxs)(It,{children:[(0,F.jsx)(Pt,{path:`/`,element:(0,F.jsx)(A_,{})}),(0,F.jsx)(Pt,{path:`/pesquisas`,element:(0,F.jsx)(j_,{})}),(0,F.jsx)(Pt,{path:`/projetos`,element:(0,F.jsx)(Ej,{})}),(0,F.jsx)(Pt,{path:`/projetos/cca_mic`,element:(0,F.jsx)(mR,{})}),(0,F.jsx)(Pt,{path:`/pesquisas/satisfacaoo_cca_mic_1`,element:(0,F.jsx)(Tj,{children:(0,F.jsx)(wj,{})})})]})})}(0,y.createRoot)(document.getElementById(`root`)).render((0,F.jsx)(v.StrictMode,{children:(0,F.jsx)(wn,{children:(0,F.jsx)(hR,{})})}));
