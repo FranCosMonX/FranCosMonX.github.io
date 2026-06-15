@@ -74,7 +74,7 @@ Primeiro, prima **WIN + R**, digite **cmd** e prima Enter. Isso fará uma editor
 
 ![Exemplo do resultado do comando winget](screenshots/winget_exemplo.png "Resuultado do uso do comando winget no terminal")
 
-Com o SO tendo o recurso Winget, para instalar os recursos, seguindo a lista, basta usar os comandos a seguir:
+Com o S.O. tendo o recurso Winget, para instalar os recursos, seguindo a lista, basta usar os comandos a seguir:
 - \`winget install "Python.Python.3.13"\`: para instalar o python na versão 3.13.14;
 - \`winget install "OpenJS.NodeJS.22"\`: para instalar o node.js na versão 22.22.3. Este não instala o gerenciador de pacote alternativo ao NPM, chamado PNPM, o que nos leva ao próximoo item;
 - \`npm install -g pnpm\`: irá instalar a versão suficiente para rodar a aplicação;
@@ -98,6 +98,8 @@ Para instalar o Git, basta acessar o site [git-scm.com](https://git-scm.com/inst
 
 Antes de iniciar, crie uma pasta, para armazenar os arquivos do sistema, em documentos ou outro diretório que não tenha permissão de administrador (diretório raiz). Após isto, abra a pasta, aperte o botão direito do mouse em uma área vazia da pasta e selecione a opção "abrir no terminal" no Windows 11 (uma opção semelhante no windows 10).
 
+![Opções visiveis após apertar o botão direito do mouse em uma área vazia da pasta](screenshots/opcao_abrir_terminal_estando_pasta.png "Exemplo do clicar do botão direito do mouse em uma área vazia")
+
 Quando o editor preto/colorido aparecer use os dois comandos a seguir, para baixar os arquivos sem muita complexidade.
 \`\`\` terminal
 git clone https://github.com/FranCosMonX/TCC-CCA-MIC-BKend.git
@@ -115,7 +117,7 @@ Quando o download das 2 aplicações tiverem terminado, oo terminal pode ser fec
 
 ### Configurando o backend
 
-Navegue até a pasta baixada chamada *"TCC-CCA-MIC-BKend.git"*, aperte o botão direito do mouse em algum local vazio da pasta (não funciona se for em cima de um arquivo) e selecione a opção **Abrir no Terminal** ou opção semelhante.
+Navegue até a pasta baixada chamada *"TCC-CCA-MIC-BKend"*, aperte o botão direito do mouse em algum local vazio da pasta (não funciona se for em cima de um arquivo) e selecione a opção **Abrir no Terminal** ou opção semelhante.
 
 Com o terminal aberto e com o python instalado, utilize os comandos a seguir:
 
@@ -145,7 +147,7 @@ flask run
 
 Feito isso, o resultado do terminal deve ser semelhante ao visto na imagem logo a seguir. É importante destacar que a URL em que o servidor está rodando **deverá ser guardada para configurar o frontend** (que no exemplo é \`http://127.0.0.1:5000\` ja que está rodando apenas no computador e **não** sendo disponibilizado pela internet). Além disso, o terminal não deverá ser fechado durante o uso da aplicação (deverá ser aberto outro posteriormente para a configuração do frontend).
 
-![Resultado bem sucedido da configuração e execução do backend](screenshots/resultado_exe_backend_ok.png)
+![Resultado bem sucedido da configuração e execução do backend](screenshots/resultado_exe_backend_ok.png "Exemplo de execução da aplicação backend após ser configurada")
           `} />
         </MyTextoCorrido>
       </MyContainer>
