@@ -1,11 +1,12 @@
 import { useEffect, type FC } from "react";
-import { AREA_ATUACAO_LIST, CONCORDANCIA_NV5_LIST, CONHECIMENTO_NV5_LIST, SIM_NAO_LIST } from '../../../../types/quetionario';
+import { AREA_ATUACAO_LIST, CONCORDANCIA_NV5_LIST, CONHECIMENTO_NV5_LIST, MICROCONTROLADORES_LIST, SIM_NAO_LIST, SOs_LIST } from '../../../../types/quetionario';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { avaliacao_ccamic_v1_schema, type Avaliacao_v1_ccamic_FormInput, type Avaliacao_v1_ccamic_FormOutput } from "./schemas/formulario_ccamic_v1.schema";
 import { supabase } from "../../../../../supabase";
 import Questao from "../../../../components/questionario/Questao";
 import MyButton from "../../../../components/questionario/MyButton";
+import { Typography } from "@mui/material";
 
 const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
   const { handleSubmit, setValue, register, formState: {errors, isSubmitted} } = useForm<
@@ -61,6 +62,7 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
 
   return (
     <form className="formularios" onSubmit={handleSubmit(onSubmit)}>
+      <Typography variant="h5">Sobre você</Typography>
       <Questao
         campo_obrigatorio={true}
         pergunta="Qual sua área de atuação?"
@@ -109,6 +111,59 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         error={!!errors.nivel_conhecimento_microcontrolador && isSubmitted}
         helpertext={errors.nivel_conhecimento_microcontrolador?.message}
       />
+      <Questao
+        campo_obrigatorio={true}
+        pergunta="A aplicação auxiliou no processo de aprendizagem?"
+        resposta_objetiva={true}
+        tipo_resposta={'string'}
+        opcoes_resposta={SIM_NAO_LIST}
+        resposta_callback={(resposta) => {
+          setValue('auxiliou_na_aprendizagem', resposta, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
+        }}
+        error={!!errors.auxiliou_na_aprendizagem && isSubmitted}
+        helpertext={errors.auxiliou_na_aprendizagem?.message}
+      />
+
+      <Typography variant="h5" sx={{marginTop: '15px'}}>Sobre recursos usados</Typography>
+      <Questao 
+        campo_obrigatorio={true}
+        pergunta="Qual seu Sistema Operacional (S.O.)?"
+        resposta_objetiva={true}
+        tipo_resposta={'string'}
+        opcoes_resposta={SOs_LIST}
+        resposta_callback={(resposta) => {
+          setValue('sistema_operacional', resposta, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
+        }}
+        error={!!errors.facil_compreender && isSubmitted}
+        helpertext={errors.facil_compreender?.message}
+      />
+      <Questao 
+        campo_obrigatorio={true}
+        pergunta="Qual o microcontrolador foi usado?"
+        resposta_objetiva={true}
+        tipo_resposta={'string'}
+        opcoes_resposta={MICROCONTROLADORES_LIST.sort()}
+        resposta_callback={(resposta) => {
+          setValue('microcontrolador', resposta, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
+        }}
+        error={!!errors.facil_compreender && isSubmitted}
+        helpertext={errors.facil_compreender?.message}
+      />
+      {/* {***} */}
+
+      <Typography variant="h5" sx={{marginTop: '15px'}}>Sobre o sistema</Typography>
       <Questao 
         campo_obrigatorio={true}
         pergunta="A aplicação foi fácil de compreender?"
@@ -141,7 +196,6 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         error={!!errors.opcoes_apresentadas_sao_claras && isSubmitted}
         helpertext={errors.opcoes_apresentadas_sao_claras?.message}
       />
-
       <Questao
         campo_obrigatorio={true}
         pergunta="Foi fácil configurar o ambiente de desenvolvimento?"
@@ -158,7 +212,6 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         error={!!errors.facil_configurar_ambiente && isSubmitted}
         helpertext={errors.facil_configurar_ambiente?.message}
       />
-
       <Questao
         campo_obrigatorio={true}
         pergunta="A navegação da aplicação é intuitiva?"
@@ -175,7 +228,24 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         error={!!errors.navegacao_intuitiva && isSubmitted}
         helpertext={errors.navegacao_intuitiva?.message}
       />
+      <Questao
+        campo_obrigatorio={true}
+        pergunta="A aplicação apresentou erros em alguma funcionalidade?"
+        resposta_objetiva={true}
+        tipo_resposta={'string'}
+        opcoes_resposta={SIM_NAO_LIST}
+        resposta_callback={(resposta) => {
+          setValue('teve_erro_funcionalidade', resposta, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
+        }}
+        error={!!errors.navegacao_intuitiva && isSubmitted}
+        helpertext={errors.navegacao_intuitiva?.message}
+      />
 
+      <Typography variant="h5" sx={{marginTop: '15px'}} >Sobre a interação com a IA</Typography>
       <Questao
         campo_obrigatorio={true}
         pergunta="A IA compreendeu corretamente os requisitos informados?"
@@ -208,23 +278,6 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         }}
         error={!!errors.ia_gerou_resposta_coerente && isSubmitted}
         helpertext={errors.ia_gerou_resposta_coerente?.message}
-      />
-
-      <Questao
-        campo_obrigatorio={true}
-        pergunta="Você utilizou a funcionalidade de áudio?"
-        resposta_objetiva={true}
-        tipo_resposta={'string'}
-        opcoes_resposta={SIM_NAO_LIST}
-        resposta_callback={(resposta) => {
-          setValue('audio_foi_usado', resposta, {
-            shouldValidate: true,
-            shouldDirty: true,
-            shouldTouch: true,
-          })
-        }}
-        error={!!errors.audio_foi_usado && isSubmitted}
-        helpertext={errors.audio_foi_usado?.message}
       />
 
       <Questao
@@ -278,6 +331,25 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         helpertext={errors.codigo_muitas_alteracoes_manuais?.message}
       />
 
+      <Typography variant="h5" sx={{marginTop: '15px'}} >Sobre as funcionalidades do sistema</Typography>
+      <Questao
+        campo_obrigatorio={true}
+        pergunta="Você utilizou a funcionalidade de áudio?"
+        resposta_objetiva={true}
+        tipo_resposta={'string'}
+        opcoes_resposta={SIM_NAO_LIST}
+        resposta_callback={(resposta) => {
+          setValue('audio_foi_usado', resposta, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+          })
+        }}
+        error={!!errors.audio_foi_usado && isSubmitted}
+        helpertext={errors.audio_foi_usado?.message}
+      />
+
+
       <Questao
         campo_obrigatorio={true}
         pergunta="A funcionalidade de compilação do projeto foi útil?"
@@ -312,6 +384,7 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         helpertext={errors.gravacao_no_microcontrolador_util?.message}
       />
 
+      <Typography variant="h5" sx={{marginTop: '15px'}} >Sobre o desenvolvimento do projeto</Typography>
       <Questao
         campo_obrigatorio={true}
         pergunta="A aplicação ajudou você a entender melhor o desenvolvimento para microcontroladores?"
@@ -346,22 +419,7 @@ const Formulario_Satisfacao_CCA_MIC_V0_1: FC = () => {
         helpertext={errors.reduziu_dificuldade_tecnica_no_desenvolvimento?.message}
       />
 
-      <Questao
-        campo_obrigatorio={true}
-        pergunta="A aplicação auxiliou no processo de aprendizagem?"
-        resposta_objetiva={true}
-        tipo_resposta={'string'}
-        opcoes_resposta={SIM_NAO_LIST}
-        resposta_callback={(resposta) => {
-          setValue('auxiliou_na_aprendizagem', resposta, {
-            shouldValidate: true,
-            shouldDirty: true,
-            shouldTouch: true,
-          })
-        }}
-        error={!!errors.auxiliou_na_aprendizagem && isSubmitted}
-        helpertext={errors.auxiliou_na_aprendizagem?.message}
-      />
+      feedback
 
       <Questao
         campo_obrigatorio={true}

@@ -4,6 +4,8 @@ import {
   CONHECIMENTO_NV5_LIST,
   CONCORDANCIA_NV5_LIST,
   SIM_NAO_LIST,
+  SOs_LIST,
+  MICROCONTROLADORES_LIST,
 } from "../../../../../types/quetionario";
 
 export const avaliacao_ccamic_v1_schema = z.object({
@@ -48,7 +50,13 @@ export const avaliacao_ccamic_v1_schema = z.object({
   utilizaria_projeto_futuro: z.enum(SIM_NAO_LIST, {error: 'Selecione uma opção.'}).transform((valor) => valor === "Sim"),
 
   recomendaria_para_pessoas: z.enum(SIM_NAO_LIST, {error: 'Selecione uma opção.'}).transform((valor) => valor === "Sim"),
+  
+  sistema_operacional: z.enum(SOs_LIST, {error: 'Selecione uma opção.'}),
 
+  microcontrolador: z.enum(MICROCONTROLADORES_LIST, {error: 'Selecione uma opção.'}),
+
+  teve_erro_funcionalidade: z.enum(SIM_NAO_LIST, {error: 'Selecione uma opção.'}).transform((valor) => valor === "Sim"),
+  
   nota_atribuida_aplicacao: z
     .number({
       error: "Informe uma nota válida"
