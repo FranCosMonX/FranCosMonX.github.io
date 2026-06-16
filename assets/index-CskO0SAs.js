@@ -446,4 +446,44 @@ pnpm run dev
 Ao executar o último comando, será disponibilizado a URL em que o Frontend estará disponível, como \`http://localhost:5173/\` visto na imagem logo abaixo.
 
 ![Resultado após utilizar o comando pnpm run dev, mostrando a URL em que a aplicação está disponível](screenshots/resultado_exe_frontend_ok.png "Resultado após utilizar o comando pnpm run dev, mostrando a URL em que a aplicação está disponível")
+
+## Utilizando o sistema
+
+A execução do Sistema só funcionará se ambas as aplicações tiverem sido configuradas corretamente. Vale lembrar que o backend deve ser executado primeiro para gerar a URL de acesso que será incluso no arquivo *.env* do frontend. É por meio dessa URL que as aplicações iram interagir. O \`vite\`, por padrão, executará a aplicação na porta local 5173, definido previamente no backend. Ou seja, se o frontend não estiver executando nessa porta, o acesso às resposta da API será bloqueado devido ás politicas de CORS.
+
+![Código que define quem pode receber as respostas da API](screenshots/cca_mic_com_front_definido_no_back.png "Código que define quem pode receber as respostas da API")
+
+Caso o frontend não esteja sendo executado nesta porta, no terminal aperte **CTRL + C** para interromper a execução e use o comando \`pnpm run dev --port 5173\`. Se mesmo assim não funcionar ou der errado, deve haver outra aplicação usando essa mesma porta no computador. Neste caso, interrompa esta outra aplicação ou altere a porta no arquivo \`app.py\` contido na pasta raiz do diretório do backend.
+
+### Problemas iniciais possíveis
+
+Caso o backend não esteja iniciado ou sua URL não informada no arquivo *.env*, localizado no diretório do frontend, o erro, como visto na imagem a seguir, pode surgir. Ou, principalmente se a URL no arquivo *.env* estiver errada, acontecimentoo inesperado pode surgir como uma mensagem informando que tens dados já salvo e posteriormente, independente da escolhe de manter os dados, irá aparecer uma mensagem do sistema sem conteúdo, apenas com um botão de OK (neste cenário, verifique o arquivo .env lembrando que após a URL deverá ter \`/api\`).
+
+![Mnesagem de erro - backend desconectado ou com problema](screenshots/problemas/error_backend_com_problema_cca_mic_ou_interrompido.png "Mnesagem de erro - backend desconectado ou com problema")
+
+Caso a mensagem continue aparecendo mesmo com o backend sendo executado e informado no arquivo *.env*, clique com o botão direito do mouse no site e selecione "inspecionar". No lado direito da aba "elementos", da interface que apareceu quando selecionaste inspecionar, aperte em "Console." Se houver o erro de politica de CORS, é porque o frontend está sendo executado em uma porta diferente da porta 5173. Dessa forma, refaça o último passo informado na configuração do frontend.
+
+### Definindo as configurações iniciais
+
+Quando se acessa a página [http://localhost:5173](http://localhost:5173), o sistema mostrará a página de apresentação para o usuário. Nela pode ser encontrado 3 botões na parte superior da tela e o campo de nome de usuário e botão de entrar. Nos primeiros 3 botões citados, estão, da esquerda para a direita, a configuração geral, voltar para o ínicio e configuração do microcontrolador (passe o mouse em cima para ver a função).
+
+![Interface de apresentação](screenshots/usecase/apresentacao_cca_mic.png "Interface de apresentação")
+
+A primeira coisa a ser definida é a **configuração geral**. Mas para isto será necessário possuir uma Chave de API da OpenAI ou Gemini. Para conseguir uma chave de API do Gemini gratuuitamente, siga o passo a passo instruído em [mundobytes.com/pt/](https://mundobytes.com/pt/Guia-completo-para-obter-e-usar-a-API-gratuita-do-Gemini./#google_vignette). Para conseguir uma chave gratuita da openai, basta criar uma conta e acessá-la [https://help.openai.com/en/](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
+
+Além de estar em posse de uma chave de API de uma IA, é necessário fornecer a URI que será armazenado o arquivo de configuração e os projetos criados durante o uso da aplicação. No computador, primeiro crie uma pasta (em documentos, por exemplo) e coloque essa URI no campo **"diretório"**. Na imagem abaixo, mostra o exemplo da URI (localização de uma pasta localizada na máquina do usuuário) da pasta *"111_EXEMPLO"* criada.
+
+![exemplo de uri de uma pasta recem criada](screenshots/exemplo_coleta_uri.png "exemplo de uri de uma pasta recem criada")
+
+Tendo essas informações, na tela de apresentação, aperte no botão com imagem de engrenagem no canto superior esquerdo e escolha a IA a ser usada, o modelo e a API Key. Logo a seguir, aperte o botão localizado do lado direito do campo "api key" para verificar se a chave de API é válida, se for, termine de preencher os dados: nome do projeto, diretório (que será armazenado os dados do projeto), se deverá ser mostrado o código fonte no chat e se ele deve adicionar comentários no código.
+
+![Interface de usuário para definir as configurações gerais do sistema](screenshots/usecase/conf_geral_cca_mic.png "Interface de usuário para definir as configurações gerais do sistema")
+
+Logo a seguir, na interface de apresentação do usuário, clique no botão localizado no canto direito superior com desenho de microchip para definir qual microcontrolador será usado na criação do código, compilação e gravação do mesmo para o microcontrolador em questão. Nesta interface, basta selecionar o microcontrolador contido na lista. Durante está etapa, **será solicitado permissão de usuário administrativo para instalar os drives das placas**, principalmente para as reconhecer na porta USB do computador (será solicitado mais de uma vez, negar a permissão de um pode, mais para a frente, impedir que o código seja gravado no microcontrolador escolhido).
+
+![Interface de usuário para definir o microcontrolador](screenshots/usecase/conf_mic_cca_mic.png "Interface de usuário para definir o microcontrolador")
+
+Concluindo tudo, basta voltar para a interface de apresentação e definir um apelido para que a IA possa interagir normalmente.
+
+![adicionando apelido na interface de apresentação](screenshots/usecase/apresentacao_preenchida_cca_mic.png "adicionando apelido na interface de apresentação")
           `})})})});function hR(){return(0,F.jsx)(`div`,{children:(0,F.jsxs)(It,{children:[(0,F.jsx)(Pt,{path:`/`,element:(0,F.jsx)(A_,{})}),(0,F.jsx)(Pt,{path:`/pesquisas`,element:(0,F.jsx)(j_,{})}),(0,F.jsx)(Pt,{path:`/projetos`,element:(0,F.jsx)(Ej,{})}),(0,F.jsx)(Pt,{path:`/projetos/tutorial_cca_mic`,element:(0,F.jsx)(mR,{})}),(0,F.jsx)(Pt,{path:`/pesquisas/satisfacaoo_cca_mic_1`,element:(0,F.jsx)(Tj,{children:(0,F.jsx)(wj,{})})})]})})}(0,y.createRoot)(document.getElementById(`root`)).render((0,F.jsx)(v.StrictMode,{children:(0,F.jsx)(wn,{children:(0,F.jsx)(hR,{})})}));
