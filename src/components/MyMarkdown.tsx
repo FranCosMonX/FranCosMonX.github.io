@@ -1,10 +1,11 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { styled } from "@mui/material/styles";
 
 // Criando um wrapper estilizado para o Markdown
 const MyMarkdownWrapper = styled("div")(({ theme }) => ({
   // estilo geral do container
-  fontFamily: theme.typography.fontFamily,
+  fontFamily: 'Arial',
 
   // inline code
   "& code": {
@@ -43,6 +44,10 @@ const MyMarkdownWrapper = styled("div")(({ theme }) => ({
 
   '& h4': {
     fontSize: '22px',
+  },
+
+  '& table': {
+    width: '100%'
   }
 }));
 
@@ -53,7 +58,7 @@ type MarkdownProps = {
 export default function MyMarkdown({ content }: MarkdownProps) {
   return (
     <MyMarkdownWrapper>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
     </MyMarkdownWrapper>
   );
 }

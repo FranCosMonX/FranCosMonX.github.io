@@ -266,6 +266,36 @@ Logo a seguir, na interface de apresentação do usuário, clique no botão loca
 Concluindo tudo, basta voltar para a interface de apresentação e definir um apelido para que a IA possa interagir normalmente.
 
 ![adicionando apelido na interface de apresentação](screenshots/usecase/apresentacao_preenchida_cca_mic.png "adicionando apelido na interface de apresentação")
+
+### Criando Projeto: Hello World
+
+Um projeto simples criado quando se inicia na programação de sistemas embarcados, o chamado *"hello world"* para mmicrocontroladores, é o Blink - fazer o led piscar a cada 1 segundo. Para tal, será o seguinte prompting:
+
+- **Microcontrolador**: Arduino UNO R3 - \`Arduino UNO\`;
+- **S.O.**: Windows 11;
+- **Nodejs**: versão 22.19.0;
+- **PNPM**: versão 10.17.0;
+- **Python**: versão 3.13.12;
+- **Nome do projeto**: Hello_World;
+- **Prompting**: *"Crie o código necessário para fazer o principal LED do microcontrolador piscar a cada 1 segundo."*
+
+![](screenshots/resultados/resultado_solicitacao_blink_cca_mic.png)
+
+Tendo gerado o código corretamente, em baixo, no último botão da direita (gerar, compilar e gravar código), irá mostrar novas funcionalidades. Primeiro será solicitado a criação do projeto e dos arquivos, depois a compilação do mesmo e por último a gravação do projeto no microcontrolador em questão.
+
+![](screenshots/resultados/resultado_solicitacao_gerar_compilar_cca_mic.png)
+
+Para concluir o projeto Hello_World, foi executado o mesmo prompting, mas usando o microcontrolador ESP32S da NodeMCU. Com a tabela, pode-se notar que a aplicação conseguiu atender ao prompting gerando o código concreto para o projeto Blink, fazendo o led piscar a cada 1 segundo.
+
+| Microcontrolador | Geração | Compilação | Gravação | Execução |
+|:-----------------|:------:|:----------:|:--------:|:--------:|
+| Arduino UNO R3   | SIM    | SIM        | SIM      | SIM      |
+| ESP32S NodeMCU   | SIM    | SIM        | SIM      | SIM      |
+
+## Fluxos alternativos
+
+Além das funcionalidades vistas ao longo do tutorial, a aplicação **salva o contexto** caso a aplicação trave ou caso o usuário feche a aba que estaria executando a aplicação (aba do navegador). O usuário, quando reconectado, pode optar por **manter os dados de configuração** e, quando for entrar no chat, pode optar por **apagar paenas os dados do chat feitas anteriormente**. Estes dois recursos são importantes pois **o usuário terá de ir a tela inicial e alterar o nome do projeto** quando quiser **criar um projeto diferente** do anterior (apagando o registro do chat), evitando que o anterior seja esquecido quando o novo for gerado.
+
           `} />
         </MyTextoCorrido>
       </MyContainer>
