@@ -279,20 +279,22 @@ Um projeto simples criado quando se inicia na programação de sistemas embarcad
 - **Nome do projeto**: Hello_World;
 - **Prompting**: *"Crie o código necessário para fazer o principal LED do microcontrolador piscar a cada 1 segundo."*
 
-![](screenshots/resultados/resultado_solicitacao_blink_cca_mic.png)
+![Visualizando tela de interação com IA que contém a resposta gerada pela mesma](screenshots/resultados/resultado_solicitacao_blink_cca_mic.png "Visualizando tela de interação com IA que contém a resposta gerada pela mesma")
 
 Tendo gerado o código corretamente, em baixo, no último botão da direita (gerar, compilar e gravar código), irá mostrar novas funcionalidades. Primeiro será solicitado a criação do projeto e dos arquivos, depois a compilação do mesmo e por último a gravação do projeto no microcontrolador em questão.
 
-![](screenshots/resultados/resultado_solicitacao_gerar_compilar_cca_mic.png)
+TituloImagem: ![Visualizando tela com funcionalidades responsáveis por interagir com o microcontrolador](screenshots/resultados/resultado_solicitacao_gerar_compilar_cca_mic.png "Visualizando tela com funcionalidades responsáveis por interagir com o microcontrolador")
 
-Para concluir o projeto Hello_World, foi executado o mesmo prompting, mas usando o microcontrolador ESP32S da NodeMCU. Com a tabela, pode-se notar que a aplicação conseguiu atender ao prompting gerando o código concreto para o projeto Blink, fazendo o led piscar a cada 1 segundo.
+Para concluir o projeto Hello_World, foi executado o mesmo prompting, mas usando o microcontrolador ESP32S da NodeMCU. Entretanto, teve que fazer uma configuração adicional: **instalar do drive do chip CP2102** [Silicon Labs: Drive CP2102](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads). Com a tabela, pode-se notar que a aplicação conseguiu atender ao prompting gerando o código concreto para o projeto Blink, fazendo o led piscar a cada 1 segundo.
 
 | Microcontrolador | Geração | Compilação | Gravação | Execução |
 |:-----------------|:------:|:----------:|:--------:|:--------:|
 | Arduino UNO R3   | SIM    | SIM        | SIM      | SIM      |
 | ESP32S NodeMCU   | SIM    | SIM        | SIM      | SIM      |
 
-## Fluxos alternativos
+![Mostrando resultado da gravação do Projeto no mic ESP32S da NodeMCU](screenshots/resultados/resultado_solicitacao_blink_esp32snodemcu.png "Mostrando resultado da gravação do Projeto no mic ESP32S da NodeMCU")
+
+## Fluxos alternativos básicos
 
 Além das funcionalidades vistas ao longo do tutorial, a aplicação **salva o contexto** caso a aplicação trave ou caso o usuário feche a aba que estaria executando a aplicação (aba do navegador). O usuário, quando reconectado, pode optar por **manter os dados de configuração** e, quando for entrar no chat, pode optar por **apagar paenas os dados do chat feitas anteriormente**. Estes dois recursos são importantes pois **o usuário terá de ir a tela inicial e alterar o nome do projeto** quando quiser **criar um projeto diferente** do anterior (apagando o registro do chat), evitando que o anterior seja esquecido quando o novo for gerado.
 
