@@ -293,7 +293,8 @@ Atualmente o sistema possui algumas limitações:
 - Suporte há apenas alguns modelos de microcontroladores;
 - Suporte há apenas alguns modelos da IA do Google e OpenAI;
 - Edição manual dos arquivos de texto, quando for preciso interagir com os arquivos do projeto em desenvolvimento;
-- Perda do projeto com o mesmo nome criado anteriormente á geração do novo código.
+- Perda do projeto com o mesmo nome criado anteriormente á geração do novo código;
+- Não há suporte a multiplos usuários na atual versão.
 
 Portanto, recomenda-se utilizar o sistema apenas em ambientes controlados para fins acadêmicos, testes e desenvolvimento.
 
