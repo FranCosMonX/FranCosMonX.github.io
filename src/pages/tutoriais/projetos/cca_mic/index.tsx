@@ -146,6 +146,12 @@ git clone https://github.com/FranCosMonX/TCC-CCA-MIC-ftend.git
 
 Quando o download das 2 aplicações tiverem terminado, oo terminal pode ser fechado.
 
+Para finalizar, é necessário instalar o **Arduin-CLI** para evitar erros durante o uso da aplicação, já que o mesmo é instalado pelo sistema se não for detectado (Windows com suporte a Winget). Para isto, acesse o site oficial da Arduino [https://arduino.github.io/arduino-cli/dev/installation/](https://arduino.github.io/arduino-cli/dev/installation/) e baixe o arduino-cli de acordo com a caracteristica do seu PC e SO (normalmente o mesmo visto na imagem logo a seguir).
+
+![Localização dos links de download do arduino-cli](screenshots/instalacao_arduino_cli_win.png "Localização dos links de download do arduino-cli")
+
+Após baixar, descompacte o arquivo \`.zip\` e copie o arquivo **arduino-cli.exe** para a seguinte pasta: \`C:\Program Files\Arduino CLI\` (se não houver, crie as pastas e subpastas com o mesmo nome informado). Ou seja, em \`Program Files\`, localizado na raiz do disco C, crie uma pasta chamada **Arduino CLI** e *cole* o arquivo dentro desta pasta.
+
 ### Configurando o backend
 
 Navegue até a pasta baixada chamada *"TCC-CCA-MIC-BKend"*, aperte o botão direito do mouse em algum local vazio da pasta (não funciona se for em cima de um arquivo) e selecione a opção **Abrir no Terminal** ou opção semelhante.
