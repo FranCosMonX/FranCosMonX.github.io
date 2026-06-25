@@ -125,6 +125,12 @@ Caso o pnpm não tenha sido instalado junto com o node, ainda no terminal, utili
 
 Para instalar o Git, basta acessar o site [git-scm.com](https://git-scm.com/install/windows) e apertar no hiperlink contendo "Git for Windows" a depender da máquina (normalmente "Git for Windows/x64 Setup"). Ao baixar, faça o mesmo procedimento realizado na instalação do nodejs. No terminal, ao concluir a instalação, basta usar o comando \`git --version\`.
 
+Para finalizar, é necessário instalar o **Arduin-CLI** para evitar erros durante o uso da aplicação, já que o mesmo é instalado pelo sistema se não for detectado (Windows com suporte a Winget). Para isto, acesse o site oficial da Arduino [https://arduino.github.io/arduino-cli/dev/installation/](https://arduino.github.io/arduino-cli/dev/installation/) e baixe o arduino-cli de acordo com a caracteristica do seu PC e SO (normalmente o mesmo visto na imagem logo a seguir).
+
+![Localização dos links de download do arduino-cli](screenshots/instalacao_arduino_cli_win.png "Localização dos links de download do arduino-cli")
+
+Após baixar, descompacte o arquivo \`.zip\` e copie o arquivo **arduino-cli.exe** para a seguinte pasta: \`C:\Program Files\Arduino CLI\` (se não houver, crie as pastas e subpastas com o mesmo nome informado). Ou seja, em \`Program Files\`, localizado na raiz do disco C, crie uma pasta chamada **Arduino CLI** e *cole* o arquivo dentro desta pasta.
+
 ### Baixando os arquivos do sistema
 
 Antes de iniciar, crie uma pasta, para armazenar os arquivos do sistema, em documentos ou outro diretório que não tenha permissão de administrador (diretório raiz). Após isto, abra a pasta, aperte o botão direito do mouse em uma área vazia da pasta e selecione a opção "abrir no terminal" no Windows 11 (uma opção semelhante no windows 10).
@@ -145,12 +151,6 @@ git clone https://github.com/FranCosMonX/TCC-CCA-MIC-ftend.git
 > Para baixar os arquivos do frontend já descompactado.
 
 Quando o download das 2 aplicações tiverem terminado, oo terminal pode ser fechado.
-
-Para finalizar, é necessário instalar o **Arduin-CLI** para evitar erros durante o uso da aplicação, já que o mesmo é instalado pelo sistema se não for detectado (Windows com suporte a Winget). Para isto, acesse o site oficial da Arduino [https://arduino.github.io/arduino-cli/dev/installation/](https://arduino.github.io/arduino-cli/dev/installation/) e baixe o arduino-cli de acordo com a caracteristica do seu PC e SO (normalmente o mesmo visto na imagem logo a seguir).
-
-![Localização dos links de download do arduino-cli](screenshots/instalacao_arduino_cli_win.png "Localização dos links de download do arduino-cli")
-
-Após baixar, descompacte o arquivo \`.zip\` e copie o arquivo **arduino-cli.exe** para a seguinte pasta: \`C:\Program Files\Arduino CLI\` (se não houver, crie as pastas e subpastas com o mesmo nome informado). Ou seja, em \`Program Files\`, localizado na raiz do disco C, crie uma pasta chamada **Arduino CLI** e *cole* o arquivo dentro desta pasta.
 
 ### Configurando o backend
 
