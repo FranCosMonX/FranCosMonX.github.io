@@ -26,6 +26,7 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
   }, [pergunta_iniciada])
 
   useEffect (() => {
+    console.log(input_text_field)
     resposta_callback(input_text_field)
   }, [input_text_field])
 
@@ -83,10 +84,19 @@ const Questao : FC <QuestaoParams> = ({pergunta, resposta_objetiva, opcoes_respo
       {
         resposta_objetiva != undefined && pergunta_iniciada && !resposta_objetiva &&
         <MyTextField
-          type={tipo_resposta == "number" ? "number" : "string"}
+          type="string"
           variant="outlined"
           value={input_text_field}
-          onChange={(e) => set_input_text_field(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (tipo_resposta === 'string'){
+              set_input_text_field(value);
+              return
+            }
+            if (/^[0-9]*[0]*$/.test(value)) {
+              set_input_text_field(value);
+            }
+          }}
         />
       }
       {
